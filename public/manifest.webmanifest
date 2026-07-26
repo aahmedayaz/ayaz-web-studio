@@ -1,0 +1,18 @@
+{
+  "name": "Ayaz Web Studio",
+  "short_name": "Ayaz Studio",
+  "description": "Fast websites and business systems for Karachi businesses.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0e140d",
+  "theme_color": "#0e140d",
+  "lang": "en-PK",
+  "icons": [
+    {
+      "src": "/brand/logo-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

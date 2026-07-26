@@ -1,0 +1,26 @@
+Ayaz Web Studio — Brand Assets
+================================
+
+Put files in this folder with these exact names:
+
+  logo-full.png   → Full 3D lockup (icon + "AYAZ" + "WEB STUDIO")
+                    Used in: Hero, Open Graph / social previews
+                    Recommended: PNG or WebP, transparent or black bg, ≤ 200KB
+
+  logo-mark.svg   → Icon-only mark (A/Y geometric symbol)
+                    Used in: Navigation, favicon
+                    Already included as a lightweight SVG stand-in.
+                    Replace with a cropped export from your official logo if preferred.
+
+  founder.png     → Founder portrait (Ahmed Ayaz) — keep as source backup
+  founder.webp    → Optimized portrait used in About section (preferred)
+
+Optional (not required by code yet):
+  favicon.ico     → Drop in /public/favicon.ico if you want a classic ICO
+  og-cover.jpg    → 1200×630 social share image (update layout.tsx openGraph.images)
+
+Do NOT rename paths without updating:
+  - src/components/Header.tsx
+  - src/components/Hero.tsx
+  - src/components/Founder.tsx
+  - src/app/layout.tsx

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ayazwebstudio.vercel.app/sitemap.xml

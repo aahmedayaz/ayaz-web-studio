@@ -1,0 +1,75 @@
+"use client";
+
+import { useState } from "react";
+import { TIER1, TIER2 } from "@/lib/site";
+import { Reveal } from "@/components/Reveal";
+
+export function Industries() {
+  const [tab, setTab] = useState<"tier1" | "tier2">("tier1");
+  const items = tab === "tier1" ? TIER1 : TIER2;
+
+  return (
+    <section id="industries" className="border-y border-line/50 bg-ink/40 py-16 md:py-24">
+      <div className="container-page">
+        <Reveal className="mb-8 max-w-xl md:mb-10">
+          <p className="eyebrow mb-3.5">Who this is for</p>
+          <h2 className="text-[clamp(1.7rem,3.5vw,2.45rem)] text-ivory">
+            Built for Karachi businesses that want more customers
+          </h2>
+          <p className="mt-3 text-ivory-muted">
+            If your customers already search Google or message on WhatsApp,
+            a proper website turns that attention into real bookings and sales.
+          </p>
+        </Reveal>
+
+        <Reveal className="mb-7 flex flex-wrap gap-2.5">
+          <button
+            type="button"
+            onClick={() => setTab("tier1")}
+            className={`min-h-11 px-5 py-2.5 text-[0.88rem] font-semibold transition ${
+              tab === "tier1"
+                ? "bg-gold text-void"
+                : "border border-line bg-surface text-ivory-muted hover:border-gold/40 hover:text-ivory"
+            }`}
+          >
+            Quick-Win Businesses
+          </button>
+          <button
+            type="button"
+            onClick={() => setTab("tier2")}
+            className={`min-h-11 px-5 py-2.5 text-[0.88rem] font-semibold transition ${
+              tab === "tier2"
+                ? "bg-gold text-void"
+                : "border border-line bg-surface text-ivory-muted hover:border-gold/40 hover:text-ivory"
+            }`}
+          >
+            High-Ticket Businesses
+          </button>
+        </Reveal>
+
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {items.map((item) => (
+            <article
+              key={item.title}
+              className={`border border-line border-l-4 bg-surface px-5 py-4 ${
+                tab === "tier2" ? "border-l-[#c1443b]" : "border-l-gold"
+              }`}
+            >
+              <span
+                className={`mb-2.5 inline-block font-mono text-[0.66rem] uppercase tracking-[0.08em] ${
+                  tab === "tier2"
+                    ? "bg-[rgba(193,68,59,0.12)] px-2.5 py-1 text-[#c1443b]"
+                    : "bg-gold/15 px-2.5 py-1 text-gold-dim"
+                }`}
+              >
+                {tab === "tier1" ? "Tier 1" : "Tier 2"}
+              </span>
+              <h4 className="mb-1.5 text-[1rem] text-ivory">{item.title}</h4>
+              <p className="text-[0.86rem] text-ivory-muted">{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
