@@ -9,13 +9,13 @@ export function Contact() {
     <section id="contact" className="section-pad border-t border-line/50 bg-ink/40">
       <div className="container-page">
         <Reveal className="section-head mb-8 md:mb-10">
-          <p className="eyebrow mb-3.5">Start growing</p>
+          <p className="eyebrow mb-3.5">Start building</p>
           <h2 className="text-[clamp(1.55rem,5vw,2.45rem)] text-ivory">
-            Tell us what you want more of
+            Ready to ship your next product?
           </h2>
-          <p className="mx-auto mt-3 max-w-[42ch] text-[0.95rem] text-ivory-muted lg:mx-0 lg:max-w-none lg:text-base">
-            Sales, bookings, orders, or walk-ins — send a WhatsApp message and
-            get a clear next step, usually within the hour.
+          <p className="mx-auto mt-3 max-w-[44ch] text-[0.95rem] text-ivory-muted lg:mx-0 lg:max-w-[52ch] lg:text-base">
+            SaaS, web apps, platforms, or automation — send a WhatsApp message
+            and get a clear next step, usually within the hour.
           </p>
         </Reveal>
 

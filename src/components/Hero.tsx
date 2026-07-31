@@ -13,21 +13,20 @@ export function Hero() {
       />
 
       <div className="container-page relative grid items-center gap-6 py-7 min-[375px]:py-8 sm:gap-8 sm:py-10 lg:py-12 xl:min-h-[min(520px,calc(100svh-4.5rem))] xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] xl:gap-10 xl:pb-14 xl:pt-8">
-        <div className="hero-copy relative z-10 mx-auto flex w-full max-w-[22rem] flex-col items-center text-center min-[375px]:max-w-[26rem] sm:max-w-[34rem] xl:mx-0 xl:max-w-[40rem] xl:items-start xl:text-left">
+        <div className="hero-copy relative z-10 mx-auto flex w-full max-w-[22rem] flex-col items-center text-center min-[375px]:max-w-[26rem] sm:max-w-[34rem] xl:mx-0 xl:max-w-[42rem] xl:items-start xl:text-left">
           <p className="eyebrow mb-3 justify-center sm:mb-4 xl:justify-start">
-            Karachi businesses · Real growth
+            Elite software company · Karachi
           </p>
 
           <h1 className="text-balance text-[clamp(1.75rem,7.2vw,3.15rem)] leading-[1.15] text-ivory">
-            We build your website —
+            We build <RotateWord />
             <br />
-            you get more <RotateWord />
+            that move businesses forward
           </h1>
 
-          <p className="mt-4 max-w-[36ch] text-[0.95rem] leading-relaxed text-ivory-muted min-[375px]:mt-5 min-[375px]:text-[1.02rem] sm:max-w-[42ch] sm:text-[1.08rem]">
-            A fast website that turns Google searches and WhatsApp chats into
-            paying customers — so you spend less time chasing leads and more
-            time running the business.
+          <p className="mt-4 max-w-[38ch] text-[0.95rem] leading-relaxed text-ivory-muted min-[375px]:mt-5 min-[375px]:text-[1.02rem] sm:max-w-[44ch] sm:text-[1.08rem]">
+            SaaS platforms, web apps, and digital solutions — designed,
+            engineered, and launched as production systems with elite polish.
           </p>
 
           <div className="mt-7 flex w-full max-w-[20rem] flex-col gap-3 min-[375px]:mt-8 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center xl:justify-start">
@@ -38,13 +37,13 @@ export function Hero() {
               className="inline-flex min-h-12 w-full items-center justify-center gap-2.5 bg-whatsapp px-5 py-3.5 text-[0.94rem] font-semibold text-white transition hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(37,211,102,0.35)] sm:w-auto"
             >
               <WhatsAppIcon className="h-[18px] w-[18px]" />
-              Get a free quote
+              Start a project
             </a>
             <a
-              href="#services"
+              href="#work"
               className="inline-flex min-h-12 w-full items-center justify-center gap-2 border border-ivory/20 bg-void/30 px-5 py-3.5 text-[0.94rem] font-semibold text-ivory backdrop-blur-sm transition hover:border-mint/50 hover:text-mint sm:w-auto"
             >
-              See what you get
+              View case studies
               <ArrowRight size={16} strokeWidth={1.8} />
             </a>
           </div>

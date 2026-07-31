@@ -12,13 +12,13 @@ export function Industries() {
     <section id="industries" className="section-pad border-y border-line/50 bg-ink/40">
       <div className="container-page">
         <Reveal className="section-head mb-8 md:mb-10">
-          <p className="eyebrow mb-3.5">Who this is for</p>
+          <p className="eyebrow mb-3.5">Who we build for</p>
           <h2 className="text-[clamp(1.55rem,5vw,2.45rem)] text-ivory">
-            Built for Karachi businesses that want more customers
+            Product teams and industries that need real software
           </h2>
-          <p className="mx-auto mt-3 max-w-[42ch] text-[0.95rem] text-ivory-muted lg:mx-0 lg:max-w-none lg:text-base">
-            If your customers already search Google or message on WhatsApp,
-            a proper website turns that attention into real bookings and sales.
+          <p className="mx-auto mt-3 max-w-[44ch] text-[0.95rem] text-ivory-muted lg:mx-0 lg:max-w-[52ch] lg:text-base">
+            Whether you are shipping a SaaS MVP or digitizing a complex
+            operation — we engineer systems that scale with ambition.
           </p>
         </Reveal>
 
@@ -32,7 +32,7 @@ export function Industries() {
                 : "border border-line bg-surface text-ivory-muted hover:border-gold/40 hover:text-ivory"
             }`}
           >
-            Quick-Win Businesses
+            Product & Growth
           </button>
           <button
             type="button"
@@ -43,7 +43,7 @@ export function Industries() {
                 : "border border-line bg-surface text-ivory-muted hover:border-gold/40 hover:text-ivory"
             }`}
           >
-            High-Ticket Businesses
+            Platforms & Enterprise
           </button>
         </Reveal>
 
@@ -51,7 +51,7 @@ export function Industries() {
           {items.map((item) => (
             <article
               key={item.title}
-              className={`border border-line border-l-4 bg-surface px-5 py-4 text-center min-[480px]:text-left ${
+              className={`industry-card border border-line border-l-4 bg-surface px-5 py-4 text-center transition duration-300 hover:-translate-y-0.5 hover:border-gold/30 min-[480px]:text-left ${
                 tab === "tier2" ? "border-l-[#c1443b]" : "border-l-gold"
               }`}
             >
@@ -62,7 +62,7 @@ export function Industries() {
                     : "bg-gold/15 px-2.5 py-1 text-gold-dim"
                 }`}
               >
-                {tab === "tier1" ? "Tier 1" : "Tier 2"}
+                {tab === "tier1" ? "Growth" : "Scale"}
               </span>
               <h4 className="mb-1.5 text-[1rem] text-ivory">{item.title}</h4>
               <p className="mx-auto max-w-[36ch] text-[0.86rem] text-ivory-muted min-[480px]:mx-0 min-[480px]:max-w-none">

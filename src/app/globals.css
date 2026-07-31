@@ -151,6 +151,8 @@
 
   .section-pad {
     padding-block: 3.25rem;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 520px;
   }
 
   @media (min-width: 480px) {
@@ -205,12 +207,77 @@
   }
 
   .reveal {
-    opacity: 0;
-    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity: 1;
   }
 
-  .reveal.in {
-    opacity: 1;
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        opacity: 0;
+        animation: reveal-fade 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 35%;
+      }
+    }
+  }
+
+  .service-card {
+    will-change: transform, box-shadow;
+  }
+
+  .content-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 220px;
+  }
+
+  /* Mobile nav — native checkbox, no React required for open/close */
+  .site-nav-panel {
+    display: none;
+  }
+
+  .site-nav-icon-close {
+    display: none;
+  }
+
+  .site-header:has(.site-nav-toggle:checked) {
+    border-color: var(--color-line);
+    background: rgba(14, 20, 13, 0.97);
+    backdrop-filter: blur(16px);
+  }
+
+  .site-header:has(.site-nav-toggle:checked) .site-nav-panel {
+    display: block;
+  }
+
+  .site-header:has(.site-nav-toggle:checked) .site-nav-icon-open {
+    display: none;
+  }
+
+  .site-header:has(.site-nav-toggle:checked) .site-nav-icon-close {
+    display: block;
+  }
+
+  .site-header:has(.site-nav-toggle:checked) .site-nav-btn {
+    background: rgba(247, 244, 234, 0.1);
+  }
+
+  @media (min-width: 1280px) {
+    .site-nav-panel,
+    .site-nav-btn {
+      display: none !important;
+    }
+  }
+
+  .case-frame {
+    will-change: transform, border-color;
+  }
+
+  .case-progress {
+    animation: case-progress-pulse 2.8s ease-in-out infinite;
+  }
+
+  .case-device {
+    will-change: transform;
   }
 
   .marquee-track {
@@ -409,6 +476,27 @@
   }
 }
 
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes case-progress-pulse {
+  0%,
+  100% {
+    width: 62%;
+    opacity: 0.85;
+  }
+  50% {
+    width: 78%;
+    opacity: 1;
+  }
+}
+
 .hero-copy > * {
   animation: fade-up 0.5s ease both;
 }
@@ -446,7 +534,12 @@
   }
 
   .reveal {
-    opacity: 1;
-    transition: none;
+    opacity: 1 !important;
+    animation: none !important;
+  }
+
+  .case-progress,
+  .case-device {
+    animation: none !important;
   }
 }

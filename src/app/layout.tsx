@@ -8,21 +8,24 @@ const sora = Sora({
   subsets: ["latin"],
   variable: "--font-sora",
   display: "swap",
-  weight: ["600", "700", "800"],
+  weight: ["700", "800"],
+  preload: true,
 });
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
-  weight: ["400", "500", "600"],
+  weight: ["400", "600"],
+  preload: true,
 });
 
 const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   variable: "--font-ibm-plex-mono",
   display: "swap",
-  weight: ["400", "500"],
+  weight: ["400"],
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -37,10 +40,11 @@ export const metadata: Metadata = {
   creator: SITE.founder,
   keywords: [
     "Ayaz Web Studio",
-    "Karachi web design",
-    "business website Pakistan",
-    "WhatsApp ordering website",
-    "Next.js agency Karachi",
+    "SaaS development Karachi",
+    "web app development Pakistan",
+    "software company Karachi",
+    "product engineering Next.js",
+    "AI automation solutions",
   ],
   openGraph: {
     type: "website",
@@ -109,6 +113,12 @@ export default function RootLayout({
     >
       <head>
         <link rel="dns-prefetch" href="https://wa.me" />
+        <link
+          rel="preload"
+          href="/brand/logo-mark.svg"
+          as="image"
+          type="image/svg+xml"
+        />
       </head>
       <body className="font-body text-ivory antialiased">
         <JsonLd />

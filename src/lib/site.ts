@@ -1,13 +1,13 @@
 export const SITE = {
   name: "Ayaz Web Studio",
   founder: "Ahmed Ayaz",
-  tagline: "Websites & Business Systems for Karachi",
+  tagline: "Elite Software · SaaS · Products · Web Apps",
   description:
-    "Ayaz Web Studio builds fast, professional websites and business management systems for restaurants, boutiques, clinics, gyms, salons and more across Karachi.",
+    "Ayaz Web Studio is an elite software company building SaaS products, web apps, and end-to-end digital solutions — from AI automation and cloud architecture to fintech, booking platforms, and real-time systems.",
   phoneDisplay: "0313-2139616",
   phoneTel: "+923132139616",
   whatsapp:
-    "https://wa.me/923132139616?text=Hi%20Ayaz%20Web%20Studio%2C%20I%27d%20like%20to%20know%20more%20about%20a%20website%20for%20my%20business",
+    "https://wa.me/923132139616?text=Hi%20Ayaz%20Web%20Studio%2C%20I%27d%20like%20to%20discuss%20a%20software%20%2F%20SaaS%20project",
   whatsappShort: "https://wa.me/923132139616",
   email: "ayaz.webstudio@gmail.com",
   address: "Pakistan Diamond City Society, Malir 15, Karachi",
@@ -23,146 +23,223 @@ export const SITE = {
 
 export const NAV_LINKS = [
   { href: "#services", label: "Services" },
+  { href: "#work", label: "Work" },
   { href: "#industries", label: "Industries" },
   { href: "#process", label: "Process" },
   { href: "#founder", label: "About" },
   { href: "#contact", label: "Contact" },
 ] as const;
 
-export const ROTATE_WORDS = ["Sales", "Customers", "Orders", "Bookings"] as const;
+export const ROTATE_WORDS = [
+  "Products",
+  "SaaS",
+  "Web Apps",
+  "Platforms",
+] as const;
 
 export const SERVICES = [
   {
-    title: "Business Websites",
+    title: "Web Development & Design",
     description:
-      "Customers find you on Google, browse your menu or catalog, and message you on WhatsApp in one tap — more inquiries, less friction.",
+      "Pixel-precise interfaces and production-grade frontends that feel fast, brand-true, and built to scale.",
     icon: "layout" as const,
   },
   {
-    title: "Management Systems & ERP",
+    title: "3D & Interactive Experiences",
     description:
-      "Stop juggling notebooks and chats. Track stock, staff, and daily ops in one place built around how you already work.",
-    icon: "layers" as const,
+      "Immersive product visuals, motion systems, and interactive scenes that make your brand unforgettable.",
+    icon: "box" as const,
   },
   {
-    title: "Appointment Booking Systems",
+    title: "AI & Automation Solutions",
     description:
-      "Clients book their own slots online. You get notified instantly — fewer missed calls, a fuller calendar.",
+      "Intelligent workflows, assistants, and automations that cut manual work and unlock new product capabilities.",
+    icon: "spark" as const,
+  },
+  {
+    title: "Authentication & Security",
+    description:
+      "Secure auth, roles, and access control engineered for real users — without slowing the product down.",
+    icon: "shield" as const,
+  },
+  {
+    title: "Cloud & Serverless Architecture",
+    description:
+      "Scalable backends on modern cloud infrastructure — resilient, cost-aware, and ready for growth.",
+    icon: "cloud" as const,
+  },
+  {
+    title: "Analytics & Dashboards",
+    description:
+      "Real-time visibility into the metrics that matter — clean charts, sharp insights, decisions on demand.",
+    icon: "chart" as const,
+  },
+  {
+    title: "Real-Time & Communication Apps",
+    description:
+      "Live chat, presence, notifications, and collaborative experiences that stay in sync as things happen.",
+    icon: "radio" as const,
+  },
+  {
+    title: "Document & Reporting Solutions",
+    description:
+      "Generate, manage, and deliver polished documents and reports — automated, branded, audit-ready.",
+    icon: "file" as const,
+  },
+  {
+    title: "Payment & Fintech Solutions",
+    description:
+      "Checkout flows, wallets, and payment systems built for trust, compliance, and conversion.",
+    icon: "wallet" as const,
+  },
+  {
+    title: "Discovery & Booking Platforms",
+    description:
+      "Search, availability, and booking experiences that turn browsers into confirmed customers.",
     icon: "calendar" as const,
   },
   {
-    title: "Order Management Systems",
+    title: "Technical Consultation & Support",
     description:
-      "Orders stay organized from click to delivery. Nothing gets lost in a WhatsApp thread when things get busy.",
-    icon: "package" as const,
+      "Architecture reviews, roadmap guidance, and ongoing engineering partnership from concept to production.",
+    icon: "compass" as const,
+  },
+] as const;
+
+export const CASE_STUDIES = [
+  {
+    id: "edtech",
+    title: "Designing an EdTech Platform",
+    category: "Web Apps · Product Design",
+    accent: "mint" as const,
+    visual: "mobile" as const,
+    tag: "LearnFlow",
   },
   {
-    title: "E-Commerce Store",
-    description:
-      "Sell online with a clean product catalog, cart, and checkout — built for mobile shoppers in Karachi who buy on WhatsApp too.",
-    icon: "store" as const,
+    id: "commerce",
+    title: "Scaling an E-Commerce System",
+    category: "SaaS · Web Development",
+    accent: "gold" as const,
+    visual: "desktop" as const,
+    tag: "CommerceOS",
+  },
+  {
+    id: "ai",
+    title: "Building an A.I. Product",
+    category: "AI · Automation",
+    accent: "violet" as const,
+    visual: "ai" as const,
+    tag: "Neural Lab",
+  },
+  {
+    id: "fintech",
+    title: "Digitizing a FinTech Flow",
+    category: "Payments · Mobile Apps",
+    accent: "blue" as const,
+    visual: "fintech" as const,
+    tag: "PayStack",
   },
 ] as const;
 
 export const TIER1 = [
   {
-    title: "Restaurants & Food Businesses",
+    title: "Startups & Product Teams",
     description:
-      "Cafes, food trucks, catering services and dine-in restaurants with zero web presence.",
+      "Founders shipping MVPs, SaaS cores, and customer-facing products that need elite engineering from day one.",
   },
   {
-    title: "Boutiques & Fashion Retail",
+    title: "Growing Digital Brands",
     description:
-      "Clothing brands, fabric shops and accessory stores currently running purely on Instagram.",
+      "Businesses ready to move beyond a brochure site into real platforms — bookings, commerce, and ops systems.",
   },
   {
-    title: "Clinics, Dentists & Health Practitioners",
+    title: "Agencies & Studios",
     description:
-      "Private doctors, specialists and diagnostic centers with no appointment booking system.",
+      "Partners who need a reliable engineering arm for complex builds, interactive experiences, and product launches.",
   },
   {
-    title: "Gyms & Fitness Studios",
+    title: "Education & Learning",
     description:
-      "Personal trainers, yoga studios and fitness centers lacking class schedules and online sign-ups.",
+      "EdTech platforms, academies, and course products with enrollment, progress tracking, and learner dashboards.",
   },
   {
-    title: "Salons & Beauty Services",
+    title: "Health & Wellness",
     description:
-      "Parlors, barbershops and aesthetic clinics operating entirely via WhatsApp and phone calls.",
+      "Clinics and wellness brands that need booking, patient flows, and secure digital experiences.",
   },
 ] as const;
 
 export const TIER2 = [
   {
-    title: "Real Estate & Property Development",
+    title: "FinTech & Payments",
     description:
-      "Builders, agents and housing societies that need property listings and virtual tours.",
+      "Wallets, checkout systems, and financial workflows where security, trust, and reliability are non-negotiable.",
   },
   {
-    title: "Automobile Dealers & Parts Suppliers",
+    title: "Real Estate & Property Tech",
     description:
-      "Showrooms, spare parts distributors and service centers lacking digital inventory catalogs.",
+      "Listing platforms, lead engines, and virtual discovery tools for builders, agencies, and housing societies.",
   },
   {
-    title: "Pharmaceuticals & Healthcare",
+    title: "Enterprise & Operations",
     description:
-      "Pharma companies, medical stores and wellness brands needing credibility and product listings.",
+      "Internal tools, ERP-style systems, and automation layers that replace spreadsheets and scattered chats.",
   },
   {
-    title: "Educational Institutions & Tuition Centers",
+    title: "Marketplaces & Platforms",
     description:
-      "Schools, academies, coaching centers and EdTech startups with outdated or non-existent websites.",
+      "Multi-sided products with discovery, matching, transactions, and real-time communication at the core.",
   },
   {
-    title: "Wedding Planners & Event Management",
+    title: "Events & Experiences",
     description:
-      "Decorators, caterers, photographers and venue owners who need portfolio showcases and booking systems.",
+      "Ticketing, venue booking, and experiential platforms that convert attention into confirmed attendance.",
   },
 ] as const;
 
 export const PROCESS = [
   {
     num: "01",
-    title: "Send us a message",
+    title: "Discover",
     description:
-      "Tell us about your business on WhatsApp or by call — takes 5 minutes.",
+      "We map your product vision, users, and constraints — then define the sharpest path to ship.",
   },
   {
     num: "02",
-    title: "We design & build",
+    title: "Architect",
     description:
-      "You send your logo, photos and details — we handle everything technical.",
+      "Clear system design: stack, data model, security, and UX — so the build never drifts.",
   },
   {
     num: "03",
-    title: "You review it",
+    title: "Build & Iterate",
     description:
-      "See your actual website before it ever goes live — request changes freely.",
+      "We ship in focused cycles with demos you can touch — polish, performance, and product feel included.",
   },
   {
     num: "04",
-    title: "We launch it",
+    title: "Launch & Scale",
     description:
-      "Your domain goes live, and your business is searchable on Google.",
+      "Deploy, monitor, and evolve. Your product stays fast, secure, and ready for the next wave of users.",
   },
 ] as const;
 
 export const FAQ_ITEMS = [
   {
-    q: "Do I need to know anything technical?",
-    a: "No. You send your business details, logo and photos over WhatsApp — we handle the domain, hosting and all the technical setup.",
+    q: "What kinds of products do you build?",
+    a: "SaaS platforms, web apps, AI-powered tools, booking and marketplace systems, fintech flows, dashboards, and custom software — end-to-end from interface to infrastructure.",
   },
   {
-    q: "How long does a website actually take?",
-    a: "Most basic business websites are live within 4–5 days of receiving your details. Management systems and booking platforms take longer depending on scope.",
+    q: "How long does a typical project take?",
+    a: "Focused MVPs and product slices often ship in weeks. Larger platforms and multi-module systems are scoped in phases so you see progress early and can launch in stages.",
   },
   {
-    q: "What do I need to pay upfront?",
-    a: "A 50% advance to begin work, with the remaining 50% due once your website is ready to review. Domain and hosting setup is included in your quote.",
+    q: "Do you only build websites?",
+    a: "No. Websites are one surface. We build full products — authentication, cloud backends, payments, real-time features, analytics, automation, and the interactive experiences around them.",
   },
   {
-    q: "Can you build something beyond a basic website?",
-    a: "Yes — appointment booking systems, order management, and custom management/ERP systems are all things we build regularly, tailored to your business.",
+    q: "How do we start?",
+    a: "Send a WhatsApp message or email with your idea or problem. We reply with clarity on scope, approach, and next steps — usually within the hour during business hours.",
   },
 ] as const;
 
@@ -177,4 +254,10 @@ export const TECH_STACK = [
   { id: "figma", label: "Figma" },
   { id: "whatsapp", label: "WhatsApp API" },
   { id: "vercel", label: "Vercel" },
+] as const;
+
+export const PROOF_STATS = [
+  { value: "Full-stack delivery", label: "UI · API · Cloud · Launch" },
+  { value: "Product-grade builds", label: "SaaS, apps & platforms" },
+  { value: "Direct engineering", label: "No middlemen — founder-led" },
 ] as const;

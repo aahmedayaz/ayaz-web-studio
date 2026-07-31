@@ -67,35 +67,63 @@ export function HeroScene3D() {
             <span className="h-2 w-2 rounded-full bg-white/25" />
             <span className="h-2 w-2 rounded-full bg-white/25" />
             <span className="ml-2 rounded-full bg-white/[0.06] px-2.5 py-0.5 font-mono text-[0.62rem] text-ivory/50">
-              yourbusiness.com
+              app.product.io
             </span>
           </div>
 
           <div className="relative p-4">
-            <div className="hero-3d-mark mb-4">
-              <svg viewBox="0 0 64 64" className="h-14 w-14" fill="none">
-                <path d="M32 8 L52 52 H40 L32 32 L24 52 H12 L32 8Z" fill="url(#chromeGrad)" />
-                <path d="M26 28 L18 52 H12 L26 28Z" fill="#e5a246" />
-                <defs>
-                  <linearGradient id="chromeGrad" x1="12" y1="8" x2="52" y2="52">
-                    <stop stopColor="#f5f5f5" />
-                    <stop offset="0.45" stopColor="#c9c9c9" />
-                    <stop offset="1" stopColor="#8a8a8a" />
-                  </linearGradient>
-                </defs>
-              </svg>
+            <div className="mb-3 flex items-center justify-between">
+              <div className="hero-3d-mark !h-11 !w-11 !rounded-lg">
+                <svg viewBox="0 0 64 64" className="h-8 w-8" fill="none">
+                  <path
+                    d="M32 8 L52 52 H40 L32 32 L24 52 H12 L32 8Z"
+                    fill="url(#chromeGrad)"
+                  />
+                  <path d="M26 28 L18 52 H12 L26 28Z" fill="#e5a246" />
+                  <defs>
+                    <linearGradient id="chromeGrad" x1="12" y1="8" x2="52" y2="52">
+                      <stop stopColor="#f5f5f5" />
+                      <stop offset="0.45" stopColor="#c9c9c9" />
+                      <stop offset="1" stopColor="#8a8a8a" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <span className="rounded-full border border-mint/30 bg-mint/10 px-2.5 py-1 font-mono text-[0.58rem] uppercase tracking-[0.1em] text-mint">
+                Live
+              </span>
             </div>
 
-            <div className="mb-2.5 h-2.5 w-[78%] rounded-full bg-white/15" />
-            <div className="mb-4 h-2.5 w-[48%] rounded-full bg-white/10" />
-
-            <div className="mb-4 grid grid-cols-2 gap-2">
-              <div className="h-14 rounded-lg border border-white/10 bg-white/[0.05]" />
-              <div className="h-14 rounded-lg border border-white/10 bg-white/[0.05]" />
+            <div className="mb-3 grid grid-cols-3 gap-2">
+              <div className="rounded-lg border border-white/10 bg-white/[0.05] p-2">
+                <div className="mb-1.5 h-1 w-6 rounded-full bg-gold/70" />
+                <div className="h-4 w-8 rounded bg-white/15" />
+              </div>
+              <div className="rounded-lg border border-white/10 bg-white/[0.05] p-2">
+                <div className="mb-1.5 h-1 w-6 rounded-full bg-mint/70" />
+                <div className="h-4 w-8 rounded bg-white/15" />
+              </div>
+              <div className="rounded-lg border border-white/10 bg-white/[0.05] p-2">
+                <div className="mb-1.5 h-1 w-6 rounded-full bg-white/40" />
+                <div className="h-4 w-8 rounded bg-white/15" />
+              </div>
             </div>
 
-            <div className="flex h-9 w-[58%] items-center justify-center rounded-full bg-whatsapp font-mono text-[0.62rem] font-semibold tracking-wide text-white">
-              ORDER NOW
+            <div className="mb-3 h-20 overflow-hidden rounded-lg border border-white/10 bg-white/[0.04] p-2.5">
+              <div className="mb-2 flex items-end gap-1.5">
+                <span className="h-6 w-2 rounded-sm bg-gold/50" />
+                <span className="h-10 w-2 rounded-sm bg-gold/70" />
+                <span className="h-7 w-2 rounded-sm bg-mint/60" />
+                <span className="h-12 w-2 rounded-sm bg-gold" />
+                <span className="h-8 w-2 rounded-sm bg-mint/50" />
+                <span className="h-14 w-2 rounded-sm bg-gold/80" />
+                <span className="h-9 w-2 rounded-sm bg-mint/70" />
+              </div>
+              <div className="h-1.5 w-[70%] rounded-full bg-white/10" />
+            </div>
+
+            <div className="flex h-9 w-full items-center justify-center rounded-lg bg-gold font-mono text-[0.62rem] font-semibold tracking-wide text-void">
+              DEPLOY PRODUCT
             </div>
           </div>
         </div>

@@ -2,7 +2,12 @@ import Image from "next/image";
 import { SITE } from "@/lib/site";
 import { Reveal } from "@/components/Reveal";
 
-const BADGES = ["React / Next.js", "Node.js", "MongoDB", "Cloud Deployment"] as const;
+const BADGES = [
+  "SaaS & Products",
+  "React / Next.js",
+  "AI & Automation",
+  "Cloud Architecture",
+] as const;
 
 function LinkedInIcon({ className }: { className?: string }) {
   return (
@@ -59,9 +64,10 @@ export function Founder() {
               height={850}
               className="aspect-[4/5] w-full object-cover object-[center_12%]"
               sizes="(max-width:768px) 320px, 400px"
-              quality={70}
+              quality={55}
               loading="lazy"
               decoding="async"
+              fetchPriority="low"
             />
           </Reveal>
 
@@ -73,15 +79,15 @@ export function Founder() {
               {SITE.founder}
             </h2>
             <p className="mx-auto mb-3.5 max-w-[42ch] text-[0.95rem] text-ivory-muted md:mx-0 md:max-w-[56ch] md:text-base">
-              A full-stack engineer based in Karachi with hands-on experience
-              across React, Next.js, Node.js and cloud infrastructure — Ayaz Web
-              Studio exists to bring that same level of engineering to local
-              businesses that are usually priced out of it.
+              A full-stack engineer based in Karachi with deep experience across
+              React, Next.js, Node.js, cloud infrastructure, and product systems
+              — Ayaz Web Studio exists to deliver elite software without the
+              agency bloat.
             </p>
             <p className="mx-auto mb-5 max-w-[42ch] text-[0.95rem] text-ivory-muted md:mx-0 md:max-w-[56ch] md:text-base">
-              Every project is built, deployed and supported personally — no
-              outsourcing, no middlemen, just a direct line to the person
-              building your website.
+              Every SaaS product, web app, and platform is architected, built,
+              and supported personally — no outsourcing, no middlemen, just a
+              direct line to the engineer shipping your software.
             </p>
 
             <div className="mb-6 flex flex-wrap justify-center gap-2.5 md:justify-start">

@@ -5,8 +5,15 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/site";
 
+const NAV_TOGGLE_ID = "aws-mobile-nav";
+
+function closeMobileNav() {
+  const el = document.getElementById(NAV_TOGGLE_ID) as HTMLInputElement | null;
+  if (el) el.checked = false;
+  document.body.style.overflow = "";
+}
+
 export function Header() {
-  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -17,48 +24,65 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    if (!open) return;
+    const input = document.getElementById(
+      NAV_TOGGLE_ID,
+    ) as HTMLInputElement | null;
+    if (!input) return;
 
-    const scrollY = window.scrollY;
-    const { body } = document;
-    const prev = {
-      position: body.style.position,
-      top: body.style.top,
-      left: body.style.left,
-      right: body.style.right,
-      width: body.style.width,
-      overflow: body.style.overflow,
+    const sync = () => {
+      document.body.style.overflow = input.checked ? "hidden" : "";
     };
 
-    // Lock scroll without scrollbar width compensation (avoids right-edge shift)
-    body.style.position = "fixed";
-    body.style.top = `-${scrollY}px`;
-    body.style.left = "0";
-    body.style.right = "0";
-    body.style.width = "100%";
-    body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && input.checked) {
+        input.checked = false;
+        sync();
+      }
+    };
 
+    const mq = window.matchMedia("(min-width: 1280px)");
+    const onMq = () => {
+      if (mq.matches && input.checked) {
+        input.checked = false;
+        sync();
+      }
+    };
+
+    input.addEventListener("change", sync);
+    window.addEventListener("keydown", onKey);
+    mq.addEventListener("change", onMq);
     return () => {
-      body.style.position = prev.position;
-      body.style.top = prev.top;
-      body.style.left = prev.left;
-      body.style.right = prev.right;
-      body.style.width = prev.width;
-      body.style.overflow = prev.overflow;
-      window.scrollTo(0, scrollY);
+      input.removeEventListener("change", sync);
+      window.removeEventListener("keydown", onKey);
+      mq.removeEventListener("change", onMq);
+      document.body.style.overflow = "";
     };
-  }, [open]);
+  }, []);
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-[background,border-color,backdrop-filter] duration-300 ${
-        scrolled || open
-          ? "border-b border-line bg-void/70 backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent"
+      className={`site-header fixed inset-x-0 top-0 z-[9999] transition-[background,border-color,backdrop-filter] duration-300 ${
+        scrolled
+          ? "is-scrolled border-b border-line bg-void/95 backdrop-blur-xl"
+          : "border-b border-transparent bg-void/80 backdrop-blur-md"
       }`}
     >
+      {/* Native checkbox — works even if React hydration fails */}
+      <input
+        id={NAV_TOGGLE_ID}
+        type="checkbox"
+        className="site-nav-toggle sr-only"
+        aria-hidden
+        tabIndex={-1}
+      />
+
       <div className="container-page flex items-center justify-between gap-3 py-3 min-[375px]:py-3.5 md:py-4">
-        <a href="#top" className="flex min-w-0 items-center gap-2 min-[375px]:gap-2.5" aria-label={SITE.name}>
+        <a
+          href="#top"
+          className="relative z-10 flex min-w-0 items-center gap-2 min-[375px]:gap-2.5"
+          aria-label={SITE.name}
+          onClick={closeMobileNav}
+        >
           <Image
             src="/brand/logo-mark.svg"
             alt=""
@@ -72,7 +96,7 @@ export function Header() {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-5 text-[0.9rem] font-medium text-ivory-muted xl:flex xl:gap-7 xl:text-[0.92rem]">
+        <nav className="hidden items-center gap-5 text-[0.9rem] font-semibold text-ivory-muted xl:flex xl:gap-7 xl:text-[0.92rem]">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -84,51 +108,60 @@ export function Header() {
           ))}
         </nav>
 
-        <a
-          href={SITE.whatsapp}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden items-center gap-2 bg-gold px-4 py-2.5 text-[0.86rem] font-semibold text-void transition hover:bg-gold-dim lg:inline-flex"
-        >
-          Get a free quote
-        </a>
+        <div className="relative z-10 flex shrink-0 items-center gap-2">
+          <a
+            href={SITE.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden items-center gap-2 bg-gold px-4 py-2.5 text-[0.86rem] font-semibold text-void transition hover:bg-gold-dim lg:inline-flex"
+          >
+            Start a project
+          </a>
 
-        <button
-          type="button"
-          className="inline-flex h-11 w-11 shrink-0 items-center justify-center text-ivory lg:hidden"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X size={22} strokeWidth={1.75} /> : <Menu size={22} strokeWidth={1.75} />}
-        </button>
+          <label
+            htmlFor={NAV_TOGGLE_ID}
+            className="site-nav-btn inline-flex h-11 w-11 cursor-pointer touch-manipulation items-center justify-center rounded-md text-ivory transition hover:bg-ivory/10 xl:hidden"
+            aria-label="Open menu"
+          >
+            <Menu
+              size={22}
+              strokeWidth={1.75}
+              className="site-nav-icon-open"
+              aria-hidden
+            />
+            <X
+              size={22}
+              strokeWidth={1.75}
+              className="site-nav-icon-close"
+              aria-hidden
+            />
+          </label>
+        </div>
       </div>
 
-      {open ? (
-        <div className="border-t border-line bg-void px-4 pb-6 pt-2 min-[375px]:px-5 lg:hidden">
-          <nav className="mx-auto flex max-w-[22rem] flex-col sm:max-w-none">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="border-b border-line py-3.5 text-center font-medium text-ivory sm:text-left"
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
+      <div className="site-nav-panel border-t border-line bg-void xl:hidden">
+        <nav className="container-page flex flex-col pb-6 pt-2">
+          {NAV_LINKS.map((link) => (
             <a
-              href={SITE.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center justify-center bg-gold px-4 py-3.5 text-sm font-semibold text-void"
-              onClick={() => setOpen(false)}
+              key={link.href}
+              href={link.href}
+              className="border-b border-line py-3.5 text-center font-semibold text-ivory sm:text-left"
+              onClick={closeMobileNav}
             >
-              Get a free quote
+              {link.label}
             </a>
-          </nav>
-        </div>
-      ) : null}
+          ))}
+          <a
+            href={SITE.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex min-h-12 items-center justify-center bg-gold px-4 py-3.5 text-sm font-semibold text-void lg:hidden"
+            onClick={closeMobileNav}
+          >
+            Start a project
+          </a>
+        </nav>
+      </div>
     </header>
   );
 }

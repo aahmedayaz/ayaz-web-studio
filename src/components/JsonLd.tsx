@@ -32,10 +32,17 @@ export function JsonLd() {
       name: SITE.founder,
       jobTitle: "Founder & Lead Developer",
     },
-    areaServed: {
-      "@type": "City",
-      name: "Karachi",
-    },
+    areaServed: [
+      { "@type": "City", name: "Karachi" },
+      { "@type": "Country", name: "Pakistan" },
+    ],
+    knowsAbout: [
+      "SaaS development",
+      "Web application development",
+      "AI automation",
+      "Cloud architecture",
+      "Product engineering",
+    ],
     sameAs: [
       SITE.whatsappShort,
       SITE.social.linkedin,

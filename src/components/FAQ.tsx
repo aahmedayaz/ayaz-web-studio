@@ -15,7 +15,7 @@ export function FAQ() {
           <Reveal className="section-head mx-auto mb-8 text-center md:mb-10">
             <p className="eyebrow mb-3.5 justify-center">Common questions</p>
             <h2 className="text-[clamp(1.55rem,5vw,2.45rem)] text-ivory">
-              Before you message us
+              Before we build together
             </h2>
           </Reveal>
 

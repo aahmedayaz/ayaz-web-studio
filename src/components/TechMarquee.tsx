@@ -29,10 +29,10 @@ export function TechMarquee() {
   const tiles = [...TECH_STACK, ...TECH_STACK];
 
   return (
-    <div className="border-y border-line/60 py-16 md:py-20 lg:py-24">
+    <div className="content-auto border-y border-line/60 py-16 md:py-20 lg:py-24">
       <div className="container-page">
         <p className="mb-10 text-center font-mono text-[0.68rem] uppercase tracking-[0.14em] text-ivory/45 md:mb-12">
-          Built with tools that keep your site fast & reliable
+          Engineered with the stack modern products ship on
         </p>
         <div
           className="overflow-hidden py-4 [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]"
