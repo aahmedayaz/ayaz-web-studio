@@ -57,22 +57,22 @@ export function Header() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="container-page flex items-center justify-between py-3.5 md:py-4">
-        <a href="#top" className="flex items-center gap-2.5" aria-label={SITE.name}>
+      <div className="container-page flex items-center justify-between gap-3 py-3 min-[375px]:py-3.5 md:py-4">
+        <a href="#top" className="flex min-w-0 items-center gap-2 min-[375px]:gap-2.5" aria-label={SITE.name}>
           <Image
             src="/brand/logo-mark.svg"
             alt=""
             width={36}
             height={36}
-            className="h-9 w-9 object-contain"
+            className="h-8 w-8 shrink-0 object-contain min-[375px]:h-9 min-[375px]:w-9"
             priority
           />
-          <span className="font-display text-[0.95rem] font-semibold tracking-tight text-ivory sm:text-[1.05rem]">
+          <span className="font-display truncate text-[0.88rem] font-semibold tracking-tight text-ivory min-[375px]:text-[0.95rem] sm:text-[1.05rem]">
             Ayaz <span className="text-gold">Web Studio</span>
           </span>
         </a>
 
-        <nav className="hidden items-center gap-7 text-[0.92rem] font-medium text-ivory-muted lg:flex">
+        <nav className="hidden items-center gap-5 text-[0.9rem] font-medium text-ivory-muted xl:flex xl:gap-7 xl:text-[0.92rem]">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -95,7 +95,7 @@ export function Header() {
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center text-ivory lg:hidden"
+          className="inline-flex h-11 w-11 shrink-0 items-center justify-center text-ivory lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -105,13 +105,13 @@ export function Header() {
       </div>
 
       {open ? (
-        <div className="border-t border-line bg-void px-5 pb-6 pt-2 lg:hidden">
-          <nav className="flex flex-col">
+        <div className="border-t border-line bg-void px-4 pb-6 pt-2 min-[375px]:px-5 lg:hidden">
+          <nav className="mx-auto flex max-w-[22rem] flex-col sm:max-w-none">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="border-b border-line py-3.5 font-medium text-ivory"
+                className="border-b border-line py-3.5 text-center font-medium text-ivory sm:text-left"
                 onClick={() => setOpen(false)}
               >
                 {link.label}

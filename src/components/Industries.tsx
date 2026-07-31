@@ -9,24 +9,24 @@ export function Industries() {
   const items = tab === "tier1" ? TIER1 : TIER2;
 
   return (
-    <section id="industries" className="border-y border-line/50 bg-ink/40 py-16 md:py-24">
+    <section id="industries" className="section-pad border-y border-line/50 bg-ink/40">
       <div className="container-page">
-        <Reveal className="mb-8 max-w-xl md:mb-10">
+        <Reveal className="section-head mb-8 md:mb-10">
           <p className="eyebrow mb-3.5">Who this is for</p>
-          <h2 className="text-[clamp(1.7rem,3.5vw,2.45rem)] text-ivory">
+          <h2 className="text-[clamp(1.55rem,5vw,2.45rem)] text-ivory">
             Built for Karachi businesses that want more customers
           </h2>
-          <p className="mt-3 text-ivory-muted">
+          <p className="mx-auto mt-3 max-w-[42ch] text-[0.95rem] text-ivory-muted lg:mx-0 lg:max-w-none lg:text-base">
             If your customers already search Google or message on WhatsApp,
             a proper website turns that attention into real bookings and sales.
           </p>
         </Reveal>
 
-        <Reveal className="mb-7 flex flex-wrap gap-2.5">
+        <Reveal className="mb-7 flex flex-col gap-2.5 min-[480px]:flex-row min-[480px]:flex-wrap min-[480px]:justify-center lg:justify-start">
           <button
             type="button"
             onClick={() => setTab("tier1")}
-            className={`min-h-11 px-5 py-2.5 text-[0.88rem] font-semibold transition ${
+            className={`min-h-11 w-full px-5 py-2.5 text-[0.88rem] font-semibold transition min-[480px]:w-auto ${
               tab === "tier1"
                 ? "bg-gold text-void"
                 : "border border-line bg-surface text-ivory-muted hover:border-gold/40 hover:text-ivory"
@@ -37,7 +37,7 @@ export function Industries() {
           <button
             type="button"
             onClick={() => setTab("tier2")}
-            className={`min-h-11 px-5 py-2.5 text-[0.88rem] font-semibold transition ${
+            className={`min-h-11 w-full px-5 py-2.5 text-[0.88rem] font-semibold transition min-[480px]:w-auto ${
               tab === "tier2"
                 ? "bg-gold text-void"
                 : "border border-line bg-surface text-ivory-muted hover:border-gold/40 hover:text-ivory"
@@ -47,11 +47,11 @@ export function Industries() {
           </button>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div className="mx-auto grid max-w-[28rem] grid-cols-1 gap-3 min-[480px]:max-w-none sm:grid-cols-2">
           {items.map((item) => (
             <article
               key={item.title}
-              className={`border border-line border-l-4 bg-surface px-5 py-4 ${
+              className={`border border-line border-l-4 bg-surface px-5 py-4 text-center min-[480px]:text-left ${
                 tab === "tier2" ? "border-l-[#c1443b]" : "border-l-gold"
               }`}
             >
@@ -65,7 +65,9 @@ export function Industries() {
                 {tab === "tier1" ? "Tier 1" : "Tier 2"}
               </span>
               <h4 className="mb-1.5 text-[1rem] text-ivory">{item.title}</h4>
-              <p className="text-[0.86rem] text-ivory-muted">{item.description}</p>
+              <p className="mx-auto max-w-[36ch] text-[0.86rem] text-ivory-muted min-[480px]:mx-0 min-[480px]:max-w-none">
+                {item.description}
+              </p>
             </article>
           ))}
         </div>

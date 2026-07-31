@@ -48,43 +48,43 @@ const SOCIALS = [
 
 export function Founder() {
   return (
-    <section id="founder" className="border-y border-line/50 bg-ink/40 py-16 md:py-24">
+    <section id="founder" className="section-pad border-y border-line/50 bg-ink/40">
       <div className="container-page">
-        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[0.85fr_1.15fr] md:gap-12">
-          <Reveal className="mx-auto w-full max-w-[340px] overflow-hidden shadow-[var(--shadow-elite)] md:mx-0">
+        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[0.85fr_1.15fr] md:gap-10 lg:gap-12">
+          <Reveal className="mx-auto w-full max-w-[280px] overflow-hidden shadow-[var(--shadow-elite)] min-[375px]:max-w-[320px] md:mx-0 md:max-w-[340px]">
             <Image
               src="/brand/founder.webp"
               alt={`${SITE.founder}, Founder & Lead Developer at ${SITE.name}, Karachi`}
               width={680}
               height={850}
               className="aspect-[4/5] w-full object-cover object-[center_12%]"
-              sizes="(max-width:768px) 340px, 400px"
+              sizes="(max-width:768px) 320px, 400px"
               quality={70}
               loading="lazy"
               decoding="async"
             />
           </Reveal>
 
-          <Reveal>
+          <Reveal className="text-center md:text-left">
             <span className="mb-3 block font-mono text-[0.78rem] uppercase tracking-[0.06em] text-gold-dim">
               Founder & Lead Developer
             </span>
-            <h2 className="mb-4 font-display text-[clamp(1.5rem,3vw,1.9rem)] font-bold text-ivory">
+            <h2 className="mb-4 font-display text-[clamp(1.45rem,4.5vw,1.9rem)] font-bold text-ivory">
               {SITE.founder}
             </h2>
-            <p className="mb-3.5 max-w-[56ch] text-ivory-muted">
+            <p className="mx-auto mb-3.5 max-w-[42ch] text-[0.95rem] text-ivory-muted md:mx-0 md:max-w-[56ch] md:text-base">
               A full-stack engineer based in Karachi with hands-on experience
               across React, Next.js, Node.js and cloud infrastructure — Ayaz Web
               Studio exists to bring that same level of engineering to local
               businesses that are usually priced out of it.
             </p>
-            <p className="mb-5 max-w-[56ch] text-ivory-muted">
+            <p className="mx-auto mb-5 max-w-[42ch] text-[0.95rem] text-ivory-muted md:mx-0 md:max-w-[56ch] md:text-base">
               Every project is built, deployed and supported personally — no
               outsourcing, no middlemen, just a direct line to the person
               building your website.
             </p>
 
-            <div className="mb-6 flex flex-wrap gap-2.5">
+            <div className="mb-6 flex flex-wrap justify-center gap-2.5 md:justify-start">
               {SOCIALS.map(({ label, href, Icon }) => (
                 <a
                   key={label}
@@ -99,7 +99,7 @@ export function Founder() {
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-2.5">
+            <div className="flex flex-wrap justify-center gap-2.5 md:justify-start">
               {BADGES.map((badge) => (
                 <span
                   key={badge}

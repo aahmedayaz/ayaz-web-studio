@@ -23,7 +23,7 @@ export function RotateWord() {
   }, []);
 
   return (
-    <span className="inline-block min-w-[10.5ch] text-gold">
+    <span className="inline-block min-w-[9.5ch] text-left text-gold sm:min-w-[10.5ch]">
       <span
         className={`inline-block transition-opacity duration-300 ease-out ${
           out ? "opacity-0" : "opacity-100"

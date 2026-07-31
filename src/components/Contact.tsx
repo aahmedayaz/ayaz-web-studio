@@ -6,26 +6,26 @@ import { MapEmbed } from "@/components/MapEmbed";
 
 export function Contact() {
   return (
-    <section id="contact" className="border-t border-line/50 bg-ink/40 py-16 md:py-24">
+    <section id="contact" className="section-pad border-t border-line/50 bg-ink/40">
       <div className="container-page">
-        <Reveal className="mb-8 max-w-xl md:mb-10">
+        <Reveal className="section-head mb-8 md:mb-10">
           <p className="eyebrow mb-3.5">Start growing</p>
-          <h2 className="text-[clamp(1.7rem,3.5vw,2.45rem)] text-ivory">
+          <h2 className="text-[clamp(1.55rem,5vw,2.45rem)] text-ivory">
             Tell us what you want more of
           </h2>
-          <p className="mt-3 text-ivory-muted">
+          <p className="mx-auto mt-3 max-w-[42ch] text-[0.95rem] text-ivory-muted lg:mx-0 lg:max-w-none lg:text-base">
             Sales, bookings, orders, or walk-ins — send a WhatsApp message and
             get a clear next step, usually within the hour.
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-7">
-          <div className="border border-line bg-surface p-7 md:p-8">
+        <div className="mx-auto grid max-w-[28rem] grid-cols-1 gap-5 min-[640px]:max-w-none lg:grid-cols-2 lg:gap-7">
+          <div className="border border-line bg-surface p-5 min-[375px]:p-6 md:p-8">
             <div className="flex gap-3.5 border-b border-line py-4">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center bg-gold/15 text-gold">
                 <Phone size={17} strokeWidth={1.6} />
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="mb-0.5 font-mono text-[0.68rem] uppercase tracking-[0.08em] text-ivory/55">
                   WhatsApp / Phone
                 </div>
@@ -33,7 +33,7 @@ export function Contact() {
                   href={SITE.whatsappShort}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[0.96rem] font-semibold text-ivory hover:text-gold"
+                  className="break-words text-[0.96rem] font-semibold text-ivory hover:text-gold"
                 >
                   {SITE.phoneDisplay}
                 </a>
@@ -44,13 +44,13 @@ export function Contact() {
               <div className="flex h-9 w-9 shrink-0 items-center justify-center bg-gold/15 text-gold">
                 <Mail size={17} strokeWidth={1.6} />
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="mb-0.5 font-mono text-[0.68rem] uppercase tracking-[0.08em] text-ivory/55">
                   Email
                 </div>
                 <a
                   href={`mailto:${SITE.email}`}
-                  className="text-[0.96rem] font-semibold text-ivory hover:text-gold"
+                  className="break-all text-[0.96rem] font-semibold text-ivory hover:text-gold"
                 >
                   {SITE.email}
                 </a>
@@ -61,7 +61,7 @@ export function Contact() {
               <div className="flex h-9 w-9 shrink-0 items-center justify-center bg-gold/15 text-gold">
                 <MapPin size={17} strokeWidth={1.6} />
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="mb-0.5 font-mono text-[0.68rem] uppercase tracking-[0.08em] text-ivory/55">
                   Studio Address
                 </div>
@@ -82,7 +82,7 @@ export function Contact() {
             </a>
           </div>
 
-          <div className="min-h-[280px] overflow-hidden border border-line shadow-[var(--shadow-elite)]">
+          <div className="min-h-[240px] overflow-hidden border border-line shadow-[var(--shadow-elite)] min-[375px]:min-h-[280px]">
             <MapEmbed />
           </div>
         </div>

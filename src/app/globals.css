@@ -20,7 +20,7 @@
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
 
   --shadow-elite: 0 20px 50px rgba(0, 0, 0, 0.4);
-  --site-max: 1440px;
+  --site-max: 1920px;
 }
 
 @layer base {
@@ -98,18 +98,91 @@
     width: 100%;
     max-width: 100%;
     margin-inline: auto;
-    padding-inline: 20px;
+    padding-inline: max(16px, env(safe-area-inset-left, 0px))
+      max(16px, env(safe-area-inset-right, 0px));
   }
 
+  /* Large phones */
+  @media (min-width: 375px) {
+    .container-page {
+      padding-inline: 20px;
+    }
+  }
+
+  /* Tablets portrait */
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 28px;
+    }
+  }
+
+  /* Tablets landscape / small laptops */
   @media (min-width: 768px) {
     .container-page {
       padding-inline: 36px;
     }
   }
 
-  @media (min-width: 1100px) {
+  @media (min-width: 900px) {
+    .container-page {
+      padding-inline: 44px;
+    }
+  }
+
+  /* Desktops */
+  @media (min-width: 1024px) {
+    .container-page {
+      padding-inline: 48px;
+    }
+  }
+
+  @media (min-width: 1280px) {
     .container-page {
       padding-inline: 56px;
+    }
+  }
+
+  /* Large desktops */
+  @media (min-width: 1440px) {
+    .container-page {
+      padding-inline: 64px;
+    }
+  }
+
+  .section-pad {
+    padding-block: 3.25rem;
+  }
+
+  @media (min-width: 480px) {
+    .section-pad {
+      padding-block: 3.75rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .section-pad {
+      padding-block: 5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .section-pad {
+      padding-block: 6rem;
+    }
+  }
+
+  .section-head {
+    max-width: 40rem;
+  }
+
+  @media (max-width: 1023px) {
+    .section-head {
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .section-head .eyebrow {
+      justify-content: center;
     }
   }
 
