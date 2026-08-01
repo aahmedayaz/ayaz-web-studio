@@ -1,97 +1,173 @@
 import {
   Boxes,
-  CalendarClock,
   ChartColumn,
   Cloud,
-  Compass,
-  FileText,
   LayoutTemplate,
-  Radio,
-  ShieldCheck,
   Sparkles,
   Wallet,
-  ArrowUpRight,
 } from "lucide-react";
-import { SERVICES } from "@/lib/site";
+import { SERVICES, TECH_STACK, SITE } from "@/lib/site";
 import { Reveal } from "@/components/Reveal";
+import { PillBadge } from "@/components/PillBadge";
+import {
+  CloudLogo,
+  FigmaLogo,
+  MongoLogo,
+  NextLogo,
+  NodeLogo,
+  ReactLogo,
+  TailwindLogo,
+  TypeScriptLogo,
+  VercelLogo,
+  WhatsAppLogo,
+} from "@/components/TechLogos";
 
 const ICONS = {
   layout: LayoutTemplate,
   box: Boxes,
   spark: Sparkles,
-  shield: ShieldCheck,
   cloud: Cloud,
   chart: ChartColumn,
-  radio: Radio,
-  file: FileText,
   wallet: Wallet,
-  calendar: CalendarClock,
-  compass: Compass,
 } as const;
+
+const LOGO_MAP = {
+  react: ReactLogo,
+  next: NextLogo,
+  node: NodeLogo,
+  mongo: MongoLogo,
+  typescript: TypeScriptLogo,
+  tailwind: TailwindLogo,
+  cloud: CloudLogo,
+  figma: FigmaLogo,
+  whatsapp: WhatsAppLogo,
+  vercel: VercelLogo,
+} as const;
+
+/** Core stack icons for side tickers (seamless loop duplicates in the track). */
+const TICKER_STACK = TECH_STACK;
+
+function VerticalIconTicker({
+  direction,
+  side,
+  reverse = false,
+}: {
+  direction: "down" | "up";
+  side: "left" | "right";
+  reverse?: boolean;
+}) {
+  const items = reverse ? [...TICKER_STACK].reverse() : TICKER_STACK;
+
+  return (
+    <div
+      aria-hidden
+      className={`services-ticker pointer-events-none absolute inset-y-0 z-[1] hidden w-[5.5rem] overflow-hidden lg:block xl:w-[6.25rem] ${
+        side === "left" ? "left-0" : "right-0"
+      }`}
+    >
+      <div
+        className={`services-ticker__track absolute inset-x-0 top-0 flex flex-col items-center ${
+          direction === "down"
+            ? "services-ticker__track--down"
+            : "services-ticker__track--up"
+        }`}
+      >
+        {[0, 1].map((copy) => (
+          <div
+            key={copy}
+            className="flex flex-col items-center gap-4 pb-4 xl:gap-5 xl:pb-5"
+          >
+            {items.map((item) => {
+              const Logo = LOGO_MAP[item.id];
+              return (
+                <div
+                  key={`${copy}-${item.id}`}
+                  title={item.label}
+                  className="services-ticker__icon flex h-14 w-14 items-center justify-center rounded-[1.15rem] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.18)] xl:h-16 xl:w-16 xl:rounded-[1.25rem]"
+                >
+                  <Logo
+                    className={`h-8 w-8 xl:h-9 xl:w-9 ${
+                      item.id === "vercel" ? "services-ticker__logo--ink" : ""
+                    }`}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function Services() {
   return (
-    <section id="services" className="section-pad">
+    <section id="services" className="section-pad blueprint-grid">
       <div className="container-page">
-        <Reveal className="section-head mb-9 md:mb-12">
-          <p className="eyebrow mb-3.5">Capabilities</p>
-          <h2 className="text-[clamp(1.55rem,5vw,2.45rem)] text-ivory">
-            A full stack of elite software services
+        <Reveal className="section-center mb-12 md:mb-16">
+          <PillBadge className="mb-5">
+            <span className="text-[var(--accent)]">✦</span>
+            Capabilities
+          </PillBadge>
+          <h2 className="text-[clamp(1.75rem,4.5vw,3rem)] font-extrabold text-[var(--fg)]">
+            Six capabilities. Zero fluff.
           </h2>
-          <p className="mx-auto mt-3 max-w-[44ch] text-[0.95rem] text-ivory-muted lg:mx-0 lg:max-w-[52ch] lg:text-base">
-            From product design and AI automation to cloud, payments, and
-            real-time systems — engineered as one coherent delivery.
+          <p className="mx-auto mt-4 max-w-[44ch] text-[1rem] text-[var(--fg-muted)]">
+            The core stack we ship most — product, AI, cloud, analytics, and
+            payments — engineered as one coherent delivery.
           </p>
+          <div className="mt-7 flex flex-wrap justify-center gap-3">
+            <a
+              href={SITE.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pill-btn pill-btn--primary"
+            >
+              Start a project
+            </a>
+            <a href="#work" className="pill-btn pill-btn--ghost">
+              See our work
+            </a>
+          </div>
         </Reveal>
 
-        <div className="mx-auto grid max-w-[28rem] grid-cols-1 gap-3.5 min-[480px]:max-w-none min-[480px]:grid-cols-2 min-[480px]:gap-4 lg:grid-cols-3 lg:gap-5">
-          {SERVICES.map((service, index) => {
-            const Icon = ICONS[service.icon];
-            const num = String(index + 1).padStart(2, "0");
+        <div className="relative">
+          <VerticalIconTicker side="left" direction="down" />
+          <VerticalIconTicker side="right" direction="up" reverse />
 
-            return (
-              <Reveal
-                key={service.title}
-                as="article"
-                className="service-card group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[#e8e2d4] bg-[#f7f4ea] p-5 shadow-[0_10px_30px_rgba(0,0,0,0.18)] transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-1.5 hover:border-gold/60 hover:shadow-[0_22px_44px_rgba(0,0,0,0.28)] min-[480px]:p-6"
-              >
-                <div
-                  className="pointer-events-none absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-gold via-gold-dim to-mint transition-transform duration-500 ease-out group-hover:scale-x-100"
-                  aria-hidden
-                />
+          <div className="min-w-0 lg:px-[5.5rem] xl:px-[6.25rem]">
+            <div className="grid grid-cols-1 border-t border-[var(--line)] sm:grid-cols-2 lg:grid-cols-3 lg:border-x lg:border-[var(--line)]">
+              {SERVICES.map((service, index) => {
+                const Icon = ICONS[service.icon];
+                const num = String(index + 1).padStart(2, "0");
 
-                <div className="relative z-[1] flex items-start justify-between gap-3">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#0e140d] text-gold shadow-[inset_0_0_0_1px_rgba(229,162,70,0.35)] transition duration-300 group-hover:scale-105 group-hover:shadow-[inset_0_0_0_1px_rgba(229,162,70,0.55),0_8px_20px_rgba(14,20,13,0.25)]">
-                    <Icon size={20} strokeWidth={1.6} />
-                  </div>
-                  <span className="font-mono text-[0.72rem] tracking-[0.14em] text-[#0e140d]/28 transition duration-300 group-hover:text-gold-dim">
-                    {num}
-                  </span>
-                </div>
-
-                <h3 className="relative z-[1] mt-5 mb-2 font-display text-[1.08rem] font-bold tracking-tight text-[#0e140d] min-[480px]:text-[1.12rem]">
-                  {service.title}
-                </h3>
-                <p className="relative z-[1] flex-1 text-[0.88rem] leading-relaxed text-[#0e140d]/62 min-[480px]:text-[0.9rem]">
-                  {service.description}
-                </p>
-
-                <div className="relative z-[1] mt-5 flex items-center gap-1.5 font-mono text-[0.68rem] uppercase tracking-[0.12em] text-gold-dim transition duration-300 group-hover:gap-2.5 group-hover:text-[#0e140d]">
-                  Explore
-                  <ArrowUpRight
-                    size={14}
-                    strokeWidth={1.8}
-                    className="transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  />
-                </div>
-
-                <div
-                  className="pointer-events-none absolute -bottom-10 -right-10 h-36 w-36 rounded-full bg-gold/10 opacity-0 blur-2xl transition duration-500 group-hover:opacity-100"
-                  aria-hidden
-                />
-              </Reveal>
-            );
-          })}
+                return (
+                  <Reveal
+                    key={service.title}
+                    as="article"
+                    className="group border-b border-[var(--line)] p-6 transition-colors hover:bg-[var(--surface)] sm:border-r sm:[&:nth-child(2n)]:border-r-0 lg:border-r lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(3n)]:border-r-0 md:p-8"
+                  >
+                    <div className="mb-5 flex items-center justify-between">
+                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[var(--line)] text-[0.72rem] font-medium text-[var(--fg-soft)]">
+                        {num}
+                      </span>
+                      <Icon
+                        size={20}
+                        strokeWidth={1.5}
+                        className="text-[var(--accent)] transition group-hover:scale-110"
+                      />
+                    </div>
+                    <h3 className="mb-2 text-[1.08rem] font-bold tracking-tight text-[var(--fg)]">
+                      {service.title}
+                    </h3>
+                    <p className="text-[0.9rem] leading-relaxed text-[var(--fg-muted)]">
+                      {service.description}
+                    </p>
+                  </Reveal>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </section>

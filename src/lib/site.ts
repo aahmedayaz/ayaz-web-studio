@@ -25,7 +25,6 @@ export const NAV_LINKS = [
   { href: "#services", label: "Services" },
   { href: "#work", label: "Work" },
   { href: "#industries", label: "Industries" },
-  { href: "#process", label: "Process" },
   { href: "#founder", label: "About" },
   { href: "#contact", label: "Contact" },
 ] as const;
@@ -57,12 +56,6 @@ export const SERVICES = [
     icon: "spark" as const,
   },
   {
-    title: "Authentication & Security",
-    description:
-      "Secure auth, roles, and access control engineered for real users — without slowing the product down.",
-    icon: "shield" as const,
-  },
-  {
     title: "Cloud & Serverless Architecture",
     description:
       "Scalable backends on modern cloud infrastructure — resilient, cost-aware, and ready for growth.",
@@ -75,34 +68,10 @@ export const SERVICES = [
     icon: "chart" as const,
   },
   {
-    title: "Real-Time & Communication Apps",
-    description:
-      "Live chat, presence, notifications, and collaborative experiences that stay in sync as things happen.",
-    icon: "radio" as const,
-  },
-  {
-    title: "Document & Reporting Solutions",
-    description:
-      "Generate, manage, and deliver polished documents and reports — automated, branded, audit-ready.",
-    icon: "file" as const,
-  },
-  {
     title: "Payment & Fintech Solutions",
     description:
       "Checkout flows, wallets, and payment systems built for trust, compliance, and conversion.",
     icon: "wallet" as const,
-  },
-  {
-    title: "Discovery & Booking Platforms",
-    description:
-      "Search, availability, and booking experiences that turn browsers into confirmed customers.",
-    icon: "calendar" as const,
-  },
-  {
-    title: "Technical Consultation & Support",
-    description:
-      "Architecture reviews, roadmap guidance, and ongoing engineering partnership from concept to production.",
-    icon: "compass" as const,
   },
 ] as const;
 
@@ -194,33 +163,6 @@ export const TIER2 = [
     title: "Events & Experiences",
     description:
       "Ticketing, venue booking, and experiential platforms that convert attention into confirmed attendance.",
-  },
-] as const;
-
-export const PROCESS = [
-  {
-    num: "01",
-    title: "Discover",
-    description:
-      "We map your product vision, users, and constraints — then define the sharpest path to ship.",
-  },
-  {
-    num: "02",
-    title: "Architect",
-    description:
-      "Clear system design: stack, data model, security, and UX — so the build never drifts.",
-  },
-  {
-    num: "03",
-    title: "Build & Iterate",
-    description:
-      "We ship in focused cycles with demos you can touch — polish, performance, and product feel included.",
-  },
-  {
-    num: "04",
-    title: "Launch & Scale",
-    description:
-      "Deploy, monitor, and evolve. Your product stays fast, secure, and ready for the next wave of users.",
   },
 ] as const;
 

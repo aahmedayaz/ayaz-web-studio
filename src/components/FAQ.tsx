@@ -4,30 +4,37 @@ import { useState } from "react";
 import { Plus } from "lucide-react";
 import { FAQ_ITEMS } from "@/lib/site";
 import { Reveal } from "@/components/Reveal";
+import { PillBadge } from "@/components/PillBadge";
 
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="section-pad">
+    <section id="faq" className="section-pad border-y border-[var(--line)]">
       <div className="container-page">
-        <div className="mx-auto w-full max-w-[760px]">
-          <Reveal className="section-head mx-auto mb-8 text-center md:mb-10">
-            <p className="eyebrow mb-3.5 justify-center">Common questions</p>
-            <h2 className="text-[clamp(1.55rem,5vw,2.45rem)] text-ivory">
+        <div className="mx-auto w-full max-w-[720px]">
+          <Reveal className="section-center mb-10 md:mb-12">
+            <PillBadge className="mb-5">
+              <span className="text-[var(--accent)]">✦</span>
+              Common questions
+            </PillBadge>
+            <h2 className="text-[clamp(1.75rem,4.5vw,3rem)] font-extrabold text-[var(--fg)]">
               Before we build together
             </h2>
           </Reveal>
 
           <Reveal>
-            <div>
+            <div className="rounded-[var(--radius-lg)] border border-[var(--line)] bg-[var(--surface)] px-4 sm:px-6">
               {FAQ_ITEMS.map((item, i) => {
                 const isOpen = open === i;
                 return (
-                  <div key={item.q} className="border-b border-line">
+                  <div
+                    key={item.q}
+                    className={i < FAQ_ITEMS.length - 1 ? "border-b border-[var(--line)]" : ""}
+                  >
                     <button
                       type="button"
-                      className="flex w-full items-center justify-between gap-3 py-4 text-left font-display text-[0.92rem] font-semibold text-ivory min-[375px]:gap-4 min-[375px]:py-5 min-[375px]:text-[0.98rem]"
+                      className="flex w-full items-center justify-between gap-3 py-5 text-left text-[0.95rem] font-semibold text-[var(--fg)]"
                       aria-expanded={isOpen}
                       onClick={() => setOpen(isOpen ? null : i)}
                     >
@@ -35,7 +42,7 @@ export function FAQ() {
                       <Plus
                         size={18}
                         strokeWidth={1.8}
-                        className={`shrink-0 text-gold-dim transition-transform duration-200 ${
+                        className={`shrink-0 text-[var(--accent)] transition-transform duration-200 ${
                           isOpen ? "rotate-45" : ""
                         }`}
                       />
@@ -46,7 +53,7 @@ export function FAQ() {
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <p className="pb-5 text-[0.9rem] text-ivory-muted min-[375px]:text-[0.92rem]">
+                        <p className="pb-5 text-[0.92rem] text-[var(--fg-muted)]">
                           {item.a}
                         </p>
                       </div>

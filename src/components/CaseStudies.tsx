@@ -180,14 +180,17 @@ function CaseVisual({
 
 export function CaseStudies() {
   return (
-    <section id="work" className="section-pad border-y border-line/50 bg-ink/30">
+    <section id="work" className="section-pad">
       <div className="container-page">
-        <Reveal className="section-head mb-9 md:mb-12">
-          <p className="eyebrow mb-3.5">01 · Case Studies</p>
-          <h2 className="text-[clamp(1.55rem,5vw,2.45rem)] text-ivory">
+        <Reveal className="section-center mb-12 md:mb-16">
+          <p className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--surface)] px-3.5 py-1.5 text-[0.78rem] font-medium text-[var(--fg-muted)]">
+            <span className="text-[var(--accent)]">✦</span>
+            Case studies
+          </p>
+          <h2 className="text-[clamp(1.75rem,4.5vw,3rem)] font-extrabold text-[var(--fg)]">
             Products that prove the craft
           </h2>
-          <p className="mx-auto mt-3 max-w-[44ch] text-[0.95rem] text-ivory-muted lg:mx-0 lg:max-w-[52ch] lg:text-base">
+          <p className="mx-auto mt-4 max-w-[44ch] text-[1rem] text-[var(--fg-muted)]">
             Selected builds across SaaS, AI, commerce, and fintech — designed
             and engineered as production systems, not mockups.
           </p>
@@ -203,7 +206,7 @@ export function CaseStudies() {
                 className="block focus-visible:outline-offset-4"
               >
                 <div
-                  className="case-frame relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-line/80 shadow-[var(--shadow-elite)] transition duration-500 group-hover:border-gold/30 sm:rounded-[2rem]"
+                  className="case-frame relative aspect-[4/3] overflow-hidden rounded-[var(--radius-xl)] border border-[var(--line)] shadow-[var(--shadow-float)] transition duration-500 group-hover:border-[var(--accent)]/40"
                   style={{ animationDelay: `${i * 60}ms` }}
                 >
                   <CaseVisual
@@ -215,16 +218,16 @@ export function CaseStudies() {
 
                 <div className="mt-5 flex items-start justify-between gap-4 px-1">
                   <div className="min-w-0">
-                    <h3 className="font-display text-[1.15rem] font-bold text-ivory transition group-hover:text-gold sm:text-[1.25rem]">
+                    <h3 className="text-[1.15rem] font-bold text-[var(--fg)] transition group-hover:text-[var(--accent)] sm:text-[1.25rem]">
                       {study.title}
                     </h3>
-                    <p className="mt-1.5 text-[0.88rem] text-ivory-muted">
+                    <p className="mt-1.5 text-[0.88rem] text-[var(--fg-muted)]">
                       {study.category}
                     </p>
                   </div>
 
                   <span
-                    className="case-arrow inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-ivory/25 text-ivory transition duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-void"
+                    className="case-arrow inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--line)] text-[var(--fg)] transition duration-300 group-hover:border-[var(--accent)] group-hover:bg-[var(--accent)] group-hover:text-[var(--accent-fg)]"
                     aria-hidden
                   >
                     <ArrowRight

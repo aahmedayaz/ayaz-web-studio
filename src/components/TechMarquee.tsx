@@ -29,19 +29,19 @@ export function TechMarquee() {
   const tiles = [...TECH_STACK, ...TECH_STACK];
 
   return (
-    <div className="content-auto border-y border-line/60 py-16 md:py-20 lg:py-24">
+    <div className="border-y border-[var(--line)] py-14 md:py-16">
       <div className="container-page">
-        <p className="mb-10 text-center font-mono text-[0.68rem] uppercase tracking-[0.14em] text-ivory/45 md:mb-12">
+        <p className="mb-8 text-center text-[0.78rem] font-medium uppercase tracking-[0.14em] text-[var(--fg-soft)]">
           Engineered with the stack modern products ship on
         </p>
         <div
-          className="overflow-hidden py-4 [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]"
+          className="overflow-hidden py-2 [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]"
           style={{
             WebkitMaskImage:
               "linear-gradient(90deg, transparent, black 6%, black 94%, transparent)",
           }}
         >
-          <div className="marquee-track flex w-max gap-5 sm:gap-6 md:gap-7" role="list">
+          <div className="marquee-track flex w-max gap-4 sm:gap-5" role="list">
             {tiles.map((item, i) => {
               const Logo = LOGO_MAP[item.id];
               return (
@@ -49,9 +49,9 @@ export function TechMarquee() {
                   key={`${item.id}-${i}`}
                   role="listitem"
                   title={item.label}
-                  className="marquee-tile flex h-[4.75rem] w-[4.75rem] shrink-0 items-center justify-center sm:h-[5.5rem] sm:w-[5.5rem]"
+                  className="flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center rounded-[var(--radius-lg)] border border-[var(--line)] bg-[var(--surface)] transition hover:border-[var(--accent)]/50 sm:h-[5rem] sm:w-[5rem]"
                 >
-                  <Logo className="h-10 w-10 sm:h-12 sm:w-12" />
+                  <Logo className="h-9 w-9 sm:h-10 sm:w-10" />
                   <span className="sr-only">{item.label}</span>
                 </div>
               );

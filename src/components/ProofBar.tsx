@@ -1,23 +1,19 @@
 import { PROOF_STATS } from "@/lib/site";
 
-/** No Reveal animation — was the main CLS culprit in Lighthouse. */
 export function ProofBar() {
   return (
     <section
-      className="border-b border-line/60 bg-ink/50 py-8 min-[375px]:py-9 md:py-11"
-      aria-label="Why Ayaz Web Studio"
+      className="border-y border-[var(--line)] bg-[var(--bg-elevated)] py-8 sm:py-10 md:py-12"
+      aria-label="What you get"
     >
       <div className="container-page">
-        <div className="mx-auto grid max-w-[22rem] grid-cols-1 gap-6 min-[480px]:max-w-none min-[480px]:grid-cols-3 min-[480px]:gap-4 sm:gap-5 sm:divide-x sm:divide-line">
+        <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
           {PROOF_STATS.map((stat) => (
-            <div
-              key={stat.value}
-              className="min-h-[4rem] text-center min-[480px]:px-3 sm:min-h-[4.5rem] sm:px-5"
-            >
-              <div className="font-display text-[clamp(1.05rem,4.2vw,1.35rem)] font-bold text-gold">
+            <div key={stat.value} className="min-w-0 px-0.5 text-center sm:px-3">
+              <div className="text-[clamp(0.72rem,2.8vw,1.25rem)] font-bold leading-snug tracking-tight text-[var(--accent)]">
                 {stat.value}
               </div>
-              <div className="mt-1.5 text-[0.84rem] text-ivory-muted min-[375px]:text-[0.88rem]">
+              <div className="mt-1 text-[clamp(0.58rem,2.2vw,0.88rem)] leading-snug text-[var(--fg-muted)] sm:mt-1.5">
                 {stat.label}
               </div>
             </div>

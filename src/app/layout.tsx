@@ -1,23 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, Inter, Sora } from "next/font/google";
+import { IBM_Plex_Mono, Manrope } from "next/font/google";
 import { SITE } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
 import "./globals.css";
 
-const sora = Sora({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-sora",
+  variable: "--font-manrope",
   display: "swap",
-  weight: ["700", "800"],
+  weight: ["400", "600", "700", "800"],
   preload: true,
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-  weight: ["400", "600"],
-  preload: true,
+  adjustFontFallback: true,
 });
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -26,6 +19,7 @@ const ibmPlexMono = IBM_Plex_Mono({
   display: "swap",
   weight: ["400"],
   preload: false,
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -94,12 +88,17 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0e140d",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#292929" },
+    { media: "(prefers-color-scheme: light)", color: "#f8f8f8" },
+  ],
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  colorScheme: "dark",
+  colorScheme: "dark light",
 };
+
+const themeInitScript = `(function(){try{var t=localStorage.getItem('aws-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t;document.documentElement.classList.toggle('dark',t==='dark');document.documentElement.style.colorScheme=t}catch(e){document.documentElement.dataset.theme='dark';document.documentElement.classList.add('dark')}})();`;
 
 export default function RootLayout({
   children,
@@ -109,18 +108,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sora.variable} ${inter.variable} ${ibmPlexMono.variable}`}
+      className={`${manrope.variable} ${ibmPlexMono.variable}`}
+      suppressHydrationWarning
     >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <link rel="dns-prefetch" href="https://wa.me" />
-        <link
-          rel="preload"
-          href="/brand/logo-mark.svg"
-          as="image"
-          type="image/svg+xml"
-        />
       </head>
-      <body className="font-body text-ivory antialiased">
+      <body className={`${manrope.className} antialiased`}>
         <JsonLd />
         {children}
       </body>

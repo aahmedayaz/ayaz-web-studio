@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { SITE } from "@/lib/site";
 import { Reveal } from "@/components/Reveal";
+import { PillBadge } from "@/components/PillBadge";
 
 const BADGES = [
   "SaaS & Products",
@@ -34,57 +35,54 @@ function FacebookIcon({ className }: { className?: string }) {
 }
 
 const SOCIALS = [
-  {
-    label: "LinkedIn",
-    href: SITE.social.linkedin,
-    Icon: LinkedInIcon,
-  },
-  {
-    label: "GitHub",
-    href: SITE.social.github,
-    Icon: GitHubIcon,
-  },
-  {
-    label: "Facebook",
-    href: SITE.social.facebook,
-    Icon: FacebookIcon,
-  },
+  { label: "LinkedIn", href: SITE.social.linkedin, Icon: LinkedInIcon },
+  { label: "GitHub", href: SITE.social.github, Icon: GitHubIcon },
+  { label: "Facebook", href: SITE.social.facebook, Icon: FacebookIcon },
 ] as const;
 
 export function Founder() {
   return (
-    <section id="founder" className="section-pad border-y border-line/50 bg-ink/40">
+    <section id="founder" className="section-pad">
       <div className="container-page">
-        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[0.85fr_1.15fr] md:gap-10 lg:gap-12">
-          <Reveal className="mx-auto w-full max-w-[280px] overflow-hidden shadow-[var(--shadow-elite)] min-[375px]:max-w-[320px] md:mx-0 md:max-w-[340px]">
+        <Reveal className="section-center mb-12 md:mb-16">
+          <PillBadge className="mb-5">
+            <span className="text-[var(--accent)]">✦</span>
+            About
+          </PillBadge>
+          <h2 className="text-[clamp(1.75rem,4.5vw,3rem)] font-extrabold text-[var(--fg)]">
+            Founder-led engineering
+          </h2>
+        </Reveal>
+
+        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-14">
+          <Reveal className="mx-auto w-full max-w-[300px] overflow-hidden rounded-[var(--radius-xl)] shadow-[var(--shadow-float)] md:mx-0 md:max-w-[360px]">
             <Image
               src="/brand/founder.webp"
               alt={`${SITE.founder}, Founder & Lead Developer at ${SITE.name}, Karachi`}
               width={680}
               height={850}
               className="aspect-[4/5] w-full object-cover object-[center_12%]"
-              sizes="(max-width:768px) 320px, 400px"
+              sizes="(max-width:768px) 300px, 360px"
               quality={55}
               loading="lazy"
               decoding="async"
-              fetchPriority="low"
             />
           </Reveal>
 
           <Reveal className="text-center md:text-left">
-            <span className="mb-3 block font-mono text-[0.78rem] uppercase tracking-[0.06em] text-gold-dim">
+            <span className="mb-3 block text-[0.8rem] font-medium text-[var(--accent)]">
               Founder & Lead Developer
             </span>
-            <h2 className="mb-4 font-display text-[clamp(1.45rem,4.5vw,1.9rem)] font-bold text-ivory">
+            <h3 className="mb-4 text-[clamp(1.5rem,3vw,2rem)] font-extrabold text-[var(--fg)]">
               {SITE.founder}
-            </h2>
-            <p className="mx-auto mb-3.5 max-w-[42ch] text-[0.95rem] text-ivory-muted md:mx-0 md:max-w-[56ch] md:text-base">
+            </h3>
+            <p className="mx-auto mb-3.5 max-w-[48ch] text-[0.98rem] text-[var(--fg-muted)] md:mx-0">
               A full-stack engineer based in Karachi with deep experience across
               React, Next.js, Node.js, cloud infrastructure, and product systems
               — Ayaz Web Studio exists to deliver elite software without the
               agency bloat.
             </p>
-            <p className="mx-auto mb-5 max-w-[42ch] text-[0.95rem] text-ivory-muted md:mx-0 md:max-w-[56ch] md:text-base">
+            <p className="mx-auto mb-6 max-w-[48ch] text-[0.98rem] text-[var(--fg-muted)] md:mx-0">
               Every SaaS product, web app, and platform is architected, built,
               and supported personally — no outsourcing, no middlemen, just a
               direct line to the engineer shipping your software.
@@ -98,18 +96,18 @@ export function Founder() {
                   target="_blank"
                   rel="noopener noreferrer me"
                   aria-label={`${SITE.founder} on ${label}`}
-                  className="inline-flex h-11 w-11 items-center justify-center border border-line bg-elevated text-ivory-muted transition hover:border-gold/50 hover:text-gold"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--fg-muted)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
                 >
                   <Icon className="h-[18px] w-[18px]" />
                 </a>
               ))}
             </div>
 
-            <div className="flex flex-wrap justify-center gap-2.5 md:justify-start">
+            <div className="flex flex-wrap justify-center gap-2 md:justify-start">
               {BADGES.map((badge) => (
                 <span
                   key={badge}
-                  className="border border-line bg-elevated px-3 py-1.5 font-mono text-[0.72rem] text-ivory-muted"
+                  className="rounded-full border border-[var(--line)] bg-[var(--surface)] px-3 py-1.5 text-[0.75rem] text-[var(--fg-muted)]"
                 >
                   {badge}
                 </span>
