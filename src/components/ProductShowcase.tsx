@@ -6,7 +6,7 @@ const LAYERS = ["Overview", "Metrics", "Activity", "Users"] as const;
 type Layer = (typeof LAYERS)[number];
 
 const METRICS = [
-  { t: "Revenue", v: "₨ 2.4M", c: "#e5a246" },
+  { t: "Revenue", v: "₨ 2.4M", c: "#0080FF" },
   { t: "Users", v: "12.8k", c: "#7dcea0" },
   { t: "Uptime", v: "99.9%", c: "#60a5fa" },
 ] as const;
@@ -303,7 +303,7 @@ export function ProductShowcase() {
                         height: chartReady ? `${h}%` : "8%",
                         background: active
                           ? `linear-gradient(180deg, ${accent}, color-mix(in srgb, ${accent} 55%, white))`
-                          : `linear-gradient(180deg, ${accent}, color-mix(in srgb, ${accent} 40%, #f0d08a))`,
+                          : `linear-gradient(180deg, ${accent}, color-mix(in srgb, ${accent} 40%, #66b3ff))`,
                         filter:
                           hoveredBar != null && !active
                             ? "brightness(0.72)"

@@ -54,13 +54,13 @@ export function ManifestoQuote() {
                 href={SITE.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pill-btn pill-btn--primary hero-cta hero-cta--primary"
+                className="pill-btn pill-btn--primary"
               >
                 <span>Start a project</span>
               </a>
               <a
                 href="#founder"
-                className="pill-btn pill-btn--ghost hero-cta hero-cta--ghost"
+                className="pill-btn pill-btn--ghost"
               >
                 <span>Meet the founder</span>
               </a>

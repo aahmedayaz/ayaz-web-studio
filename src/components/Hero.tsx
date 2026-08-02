@@ -72,14 +72,14 @@ export function Hero() {
                 href={SITE.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pill-btn pill-btn--whatsapp hero-cta hero-cta--wa w-full sm:w-auto"
+                className="pill-btn pill-btn--primary w-full sm:w-auto"
               >
                 <WhatsAppIcon className="h-[15px] w-[15px] sm:h-[18px] sm:w-[18px]" />
                 <span>Start a project</span>
               </a>
               <a
                 href="#work"
-                className="pill-btn pill-btn--ghost hero-cta hero-cta--ghost w-full sm:w-auto"
+                className="pill-btn pill-btn--ghost w-full sm:w-auto"
               >
                 <span>View case studies</span>
               </a>

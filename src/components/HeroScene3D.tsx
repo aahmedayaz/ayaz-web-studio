@@ -79,7 +79,7 @@ export function HeroScene3D() {
                     d="M32 8 L52 52 H40 L32 32 L24 52 H12 L32 8Z"
                     fill="url(#chromeGrad)"
                   />
-                  <path d="M26 28 L18 52 H12 L26 28Z" fill="#e5a246" />
+                  <path d="M26 28 L18 52 H12 L26 28Z" fill="#0080FF" />
                   <defs>
                     <linearGradient id="chromeGrad" x1="12" y1="8" x2="52" y2="52">
                       <stop stopColor="#f5f5f5" />

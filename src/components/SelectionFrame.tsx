@@ -13,7 +13,7 @@ export function SelectionFrame({
   className?: string;
   /** Keep phrase on one line (hero). Set false for multi-line quotes. */
   nowrap?: boolean;
-  /** Guided auto-drag: cursor enters left, selects across, then holds. */
+  /** Continuous auto-drag: cursor selects across, holds, then loops. */
   animate?: boolean;
 }) {
   return (

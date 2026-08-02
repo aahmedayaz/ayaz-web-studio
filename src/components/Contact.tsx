@@ -26,7 +26,7 @@ export function Contact() {
               href={SITE.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="pill-btn pill-btn--whatsapp"
+              className="pill-btn pill-btn--primary"
             >
               <WhatsAppIcon className="h-[18px] w-[18px]" />
               Message on WhatsApp

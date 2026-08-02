@@ -9,7 +9,7 @@ const ACCENT = {
     bar: "bg-mint",
   },
   gold: {
-    glow: "rgba(229, 162, 70, 0.24)",
+    glow: "rgba(0, 128, 255, 0.24)",
     chip: "bg-gold/15 text-gold",
     bar: "bg-gold",
   },

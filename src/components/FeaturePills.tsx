@@ -18,50 +18,58 @@ import {
 } from "lucide-react";
 
 const CAPABILITY_PILLS = [
-  { label: "SaaS platforms", tone: "primary", Icon: Layers },
-  { label: "Web apps", tone: "secondary", Icon: AppWindow },
-  { label: "AI automation", tone: "tertiary", Icon: Sparkles },
-  { label: "Cloud & serverless", tone: "quaternary", Icon: Cloud },
-  { label: "Fintech flows", tone: "primary", Icon: Wallet },
-  { label: "Real-time apps", tone: "secondary", Icon: Radio },
-  { label: "Auth & security", tone: "tertiary", Icon: Lock },
-  { label: "Analytics", tone: "quaternary", Icon: ChartColumn },
-  { label: "Booking systems", tone: "primary", Icon: CalendarClock },
-  { label: "3D experiences", tone: "secondary", Icon: Boxes },
-  { label: "Payments", tone: "tertiary", Icon: CreditCard },
-  { label: "Product design", tone: "quaternary", Icon: Palette },
-  { label: "Next.js & React", tone: "primary", Icon: Code2 },
-  { label: "API platforms", tone: "secondary", Icon: Server },
-  { label: "Dashboards", tone: "tertiary", Icon: LayoutTemplate },
-  { label: "Mobile-ready web", tone: "quaternary", Icon: Smartphone },
+  { label: "SaaS platforms", Icon: Layers },
+  { label: "Web apps", Icon: AppWindow },
+  { label: "AI automation", Icon: Sparkles },
+  { label: "Cloud & serverless", Icon: Cloud },
+  { label: "Fintech flows", Icon: Wallet },
+  { label: "Real-time apps", Icon: Radio },
+  { label: "Auth & security", Icon: Lock },
+  { label: "Analytics", Icon: ChartColumn },
+  { label: "Booking systems", Icon: CalendarClock },
+  { label: "3D experiences", Icon: Boxes },
+  { label: "Payments", Icon: CreditCard },
+  { label: "Product design", Icon: Palette },
+  { label: "Next.js & React", Icon: Code2 },
+  { label: "API platforms", Icon: Server },
+  { label: "Dashboards", Icon: LayoutTemplate },
+  { label: "Mobile-ready web", Icon: Smartphone },
 ] as const;
 
-const TONE: Record<(typeof CAPABILITY_PILLS)[number]["tone"], string> = {
-  primary: "bg-[var(--accent)] text-[#1a140c] border-[var(--line)]",
-  secondary: "bg-[#7dcea0] text-[#0f1a14] border-[var(--line)]",
-  tertiary: "bg-[#60a5fa] text-[#0c1520] border-[var(--line)]",
-  quaternary: "bg-[#c4b5fd] text-[#1a1028] border-[var(--line)]",
-};
+/** Brilliant-style cycle: blue → pink → yellow → orange */
+const TONES = [
+  { bg: "#0080FF", fg: "#ffffff" },
+  { bg: "#FF2D8B", fg: "#ffffff" },
+  { bg: "#F5C518", fg: "#1a1408" },
+  { bg: "#FF7A1A", fg: "#ffffff" },
+] as const;
 
 export function FeaturePills() {
   /* Two copies for seamless loop — keep DOM lean */
   const tiles = [...CAPABILITY_PILLS, ...CAPABILITY_PILLS];
 
   return (
-    <div className="marquee-mask relative overflow-hidden py-3">
+    <div className="marquee-mask relative overflow-hidden py-3.5 sm:py-4">
       <div
-        className="marquee-track flex w-max items-center gap-2"
-        style={{ animationDuration: "90s" }}
+        className="marquee-track flex w-max items-center gap-2.5 sm:gap-3"
+        style={{ animationDuration: "55s" }}
         aria-hidden
       >
         {tiles.map((pill, i) => {
           const Icon = pill.Icon;
+          const tone = TONES[i % TONES.length];
           return (
             <span
               key={`${pill.label}-${i}`}
-              className={`inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-3 py-1.5 text-[0.8125rem] font-medium ${TONE[pill.tone]}`}
+              className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-3.5 py-2 text-[0.8125rem] font-semibold tracking-[-0.01em] sm:px-4 sm:py-2.5 sm:text-[0.875rem]"
+              style={{ background: tone.bg, color: tone.fg }}
             >
-              <Icon size={14} strokeWidth={2.25} className="shrink-0 opacity-90" aria-hidden />
+              <Icon
+                size={15}
+                strokeWidth={2.35}
+                className="shrink-0 sm:size-4"
+                aria-hidden
+              />
               {pill.label}
             </span>
           );
