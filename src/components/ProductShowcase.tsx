@@ -84,7 +84,7 @@ export function ProductShowcase() {
 
   const shell = mockDark
     ? {
-        frame: "bg-[#141414] border-[var(--line-strong)]",
+        frame: "bg-[#141414] border-(--line-strong)",
         titlebar: "border-white/10",
         title: "text-white/40",
         aside: "bg-[#1a1a1a] border-white/8",
@@ -106,7 +106,7 @@ export function ProductShowcase() {
         mobileTabs: "bg-[#1a1a1a] border-white/8",
       }
     : {
-        frame: "bg-[var(--mock-bg)] border-[var(--line-strong)]",
+        frame: "bg-(--mock-bg) border-(--line-strong)",
         titlebar: "border-black/10",
         title: "text-black/40",
         aside: "bg-[#f0f0f2] border-black/8",
@@ -122,21 +122,21 @@ export function ProductShowcase() {
         swatchLabel: "text-black/70",
         swatchHex: "text-black/40",
         swatchBtn: "hover:bg-black/[0.03]",
-        swatchActive: "ring-1 ring-[var(--accent)]/50 bg-black/[0.03]",
+        swatchActive: "ring-1 ring-(--accent)/50 bg-black/[0.03]",
         toggleTrack: "bg-black/5",
         toggleIdle: "text-black/40",
         mobileTabs: "bg-[#f0f0f2] border-black/8",
       };
 
   return (
-    <div className="product-showcase relative mx-auto w-full min-w-0 max-w-[860px]">
+    <div className="product-showcase relative mx-auto w-full min-w-0 max-w-215">
       <div
-        className="pointer-events-none absolute -inset-3 rounded-[1.5rem] bg-[radial-gradient(circle_at_50%_30%,color-mix(in_srgb,var(--accent)_18%,transparent),transparent_65%)] blur-2xl sm:-inset-6 sm:rounded-[2rem]"
+        className="pointer-events-none absolute -inset-3 rounded-3xl bg-[radial-gradient(circle_at_50%_30%,color-mix(in_srgb,var(--accent)_18%,transparent),transparent_65%)] blur-2xl sm:-inset-6 sm:rounded-4xl"
         aria-hidden
       />
 
       <div
-        className={`product-showcase__frame relative min-w-0 overflow-hidden rounded-[1rem] border shadow-[var(--shadow-float)] sm:rounded-[1.5rem] ${shell.frame}`}
+        className={`product-showcase__frame relative min-w-0 overflow-hidden rounded-2xl border shadow-elite sm:rounded-3xl ${shell.frame}`}
       >
         <div
           className={`flex min-w-0 items-center gap-1.5 border-b px-3 py-2.5 sm:gap-2 sm:px-4 sm:py-3 ${shell.titlebar}`}
@@ -213,7 +213,7 @@ export function ProductShowcase() {
                       setAutoPlay(false);
                       setLayer(item);
                     }}
-                    className={`w-full rounded-md px-2 py-1.5 text-left text-[0.75rem] transition-[background-color,color,transform] duration-200 ${
+                    className={`w-full rounded-md px-2 py-1.5 text-left text-xs transition-[background-color,color,transform] duration-200 ${
                       active ? "font-semibold" : shell.navIdle
                     }`}
                     style={
@@ -257,7 +257,7 @@ export function ProductShowcase() {
                     {card.t}
                   </div>
                   <div
-                    className="mt-0.5 truncate text-[0.78rem] font-bold leading-tight tracking-tight transition-transform duration-300 group-hover:translate-y-[-1px] sm:mt-1 sm:text-[1.05rem]"
+                    className="mt-0.5 truncate text-[0.78rem] font-bold leading-tight tracking-tight transition-transform duration-300 group-hover:-translate-y-px sm:mt-1 sm:text-[1.05rem]"
                     style={{ color: i === 0 ? accent : card.c }}
                   >
                     {card.v}
@@ -298,7 +298,7 @@ export function ProductShowcase() {
                       key={`${layer}-${i}`}
                       type="button"
                       aria-label={`${CHART_LABELS[i]}: ${h}%`}
-                      className={`product-showcase__bar relative min-w-0 flex-1 rounded-t-md transition-[height,filter,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] ${shell.chartTrack}`}
+                      className={`product-showcase__bar relative min-w-0 flex-1 rounded-t-md transition-[height,filter,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--accent) ${shell.chartTrack}`}
                       style={{
                         height: chartReady ? `${h}%` : "8%",
                         background: active

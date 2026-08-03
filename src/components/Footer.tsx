@@ -1,37 +1,60 @@
 import { GridRule } from "@/components/GridRails";
 import { NAV_LINKS, SITE } from "@/lib/site";
 
+const CONTACT_LINKS = [
+  { href: SITE.whatsapp, label: "WhatsApp", external: true },
+  { href: `mailto:${SITE.email}`, label: "Email", external: false },
+  { href: "/#contact", label: "Start a project", external: false },
+] as const;
+
+const SOCIAL_LINKS = [
+  { href: SITE.social.linkedin, label: "LinkedIn" },
+  { href: SITE.social.github, label: "GitHub" },
+] as const;
+
 export function Footer() {
   return (
     <footer className="relative w-full">
       <GridRule />
 
-      <div className="container-wide px-8 py-[clamp(3.5rem,6.7vw,6rem)] pb-[clamp(2.5rem,4vw,4rem)]">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-3 lg:grid-cols-[2fr_1fr_1fr]">
-          <div className="col-span-2 md:col-span-3 lg:col-span-1">
-            <div className="flex flex-col items-center gap-7 text-center lg:items-start lg:text-left">
-              <a
-                href="#top"
-                className="text-[1.35rem] font-extrabold tracking-tight text-[var(--fg)]"
-              >
-                {SITE.name}
-              </a>
-              <p className="max-w-[28ch] text-[clamp(1rem,1.4vw,1.25rem)] font-medium text-[var(--fg-muted)]">
-                Elite software for SaaS, products & web apps — built in Karachi.
-              </p>
-            </div>
-          </div>
+      <div className="container-page py-[clamp(3.25rem,7vw,5.5rem)]">
+        <div className="grid gap-12 sm:gap-14 md:grid-cols-12 md:gap-x-8 md:gap-y-12">
+          {/* Brand */}
+          <div className="md:col-span-5 lg:col-span-6">
+            <a
+              href="/"
+              className="group inline-flex items-center gap-2.5"
+              aria-label={SITE.name}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/brand/logo-mark.svg"
+                alt=""
+                width={36}
+                height={36}
+                className="h-8 w-8 object-contain sm:h-9 sm:w-9"
+                decoding="async"
+              />
+              <span className="text-[1.15rem] font-extrabold tracking-tight text-(--fg) sm:text-[1.3rem]">
+                Ayaz{" "}
+                <span className="text-(--accent) transition group-hover:brightness-110">
+                  Web Studio
+                </span>
+              </span>
+            </a>
+            <p className="mt-5 max-w-[32ch] text-[0.95rem] leading-relaxed text-(--fg-muted) sm:mt-6 sm:text-[1.05rem]">
+              Elite software for SaaS, products &amp; web apps — built in
+              Karachi.
+            </p>
 
-          <div className="flex flex-col items-center gap-6 text-center">
-            <h3 className="m-0 text-[0.875rem] font-extrabold uppercase tracking-[0.08em] text-[var(--fg-muted)]">
-              Navigate
-            </h3>
-            <ul className="m-0 flex list-none flex-col items-center gap-6 p-0">
-              {NAV_LINKS.map((link) => (
+            <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-3 sm:mt-8">
+              {SOCIAL_LINKS.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-[1rem] text-[var(--fg)] transition-colors hover:text-[var(--accent)]"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[0.88rem] font-medium text-(--fg-soft) transition-colors hover:text-(--accent)"
                   >
                     {link.label}
                   </a>
@@ -40,29 +63,44 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="flex flex-col items-center gap-6 text-center">
-            <h3 className="m-0 text-[0.875rem] font-extrabold uppercase tracking-[0.08em] text-[var(--fg-muted)]">
+          {/* Navigate */}
+          <div className="md:col-span-3 md:col-start-7 lg:col-span-3 lg:col-start-8">
+            <h3 className="m-0 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-(--fg-soft)">
+              Navigate
+            </h3>
+            <ul className="mt-5 flex list-none flex-col gap-3.5 p-0 sm:mt-6 sm:gap-4">
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="text-[0.98rem] font-medium text-(--fg) transition-colors hover:text-(--accent)"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div className="md:col-span-3 lg:col-span-2">
+            <h3 className="m-0 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-(--fg-soft)">
               Contact
             </h3>
-            <ul className="m-0 flex list-none flex-col items-center gap-6 p-0">
-              <li>
-                <a
-                  href={SITE.whatsapp}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-[1rem] text-[var(--fg)] transition-colors hover:text-[var(--accent)]"
-                >
-                  WhatsApp
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  className="text-[1rem] text-[var(--fg)] transition-colors hover:text-[var(--accent)]"
-                >
-                  Start a project
-                </a>
-              </li>
+            <ul className="mt-5 flex list-none flex-col gap-3.5 p-0 sm:mt-6 sm:gap-4">
+              {CONTACT_LINKS.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    {...(link.external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                    className="text-[0.98rem] font-medium text-(--fg) transition-colors hover:text-(--accent)"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -70,9 +108,12 @@ export function Footer() {
 
       <GridRule />
 
-      <div className="container-wide px-8 py-[clamp(1.5rem,2.4vw,2rem)] pb-8">
-        <p className="m-0 text-[clamp(0.875rem,1.1vw,1rem)] text-[var(--fg-muted)]">
-          &copy; {SITE.year} {SITE.name}, Karachi. All rights reserved.
+      <div className="container-page flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between sm:py-7">
+        <p className="m-0 text-[0.82rem] text-(--fg-soft) sm:text-[0.88rem]">
+          &copy; {SITE.year} {SITE.name}. All rights reserved.
+        </p>
+        <p className="m-0 text-[0.82rem] text-(--fg-soft) sm:text-[0.88rem]">
+          Karachi, Pakistan
         </p>
       </div>
     </footer>

@@ -14,16 +14,16 @@ export function ManifestoQuote() {
             nowrap={false}
             animate
           >
-            <p className="m-0 text-balance px-2 py-3 text-[clamp(1.5rem,4.2vw,2.75rem)] font-extrabold leading-[1.25] tracking-[-0.01em] text-[var(--fg)] sm:px-4">
-              <span className="manifesto-accent manifesto-accent--1 text-[var(--accent)]">
+            <p className="m-0 text-balance px-2 py-3 text-[clamp(1.5rem,4.2vw,2.75rem)] font-extrabold leading-tight tracking-[-0.01em] text-(--fg) sm:px-4">
+              <span className="manifesto-accent manifesto-accent--1 text-(--accent)">
                 OH MY GOD!
               </span>{" "}
               We&apos;re shipping in{" "}
-              <span className="manifesto-accent manifesto-accent--2 text-[var(--accent)]">
+              <span className="manifesto-accent manifesto-accent--2 text-(--accent)">
                 weeks
               </span>{" "}
               what used to take{" "}
-              <span className="manifesto-accent manifesto-accent--3 text-[var(--accent)]">
+              <span className="manifesto-accent manifesto-accent--3 text-(--accent)">
                 quarters
               </span>{" "}
               with agencies.
@@ -40,11 +40,11 @@ export function ManifestoQuote() {
                 sizes="48px"
                 quality={55}
                 loading="lazy"
-                className="h-12 w-12 rounded-full object-cover ring-2 ring-[var(--accent)]"
+                className="h-12 w-12 rounded-full object-cover ring-2 ring-(--accent)"
               />
               <div>
-                <div className="font-semibold text-[var(--fg)]">{SITE.founder}</div>
-                <div className="text-sm text-[var(--fg-muted)]">
+                <div className="font-semibold text-(--fg)">{SITE.founder}</div>
+                <div className="text-sm text-(--fg-muted)">
                   Founder · {SITE.name}
                 </div>
               </div>
@@ -59,7 +59,7 @@ export function ManifestoQuote() {
                 <span>Start a project</span>
               </a>
               <a
-                href="#founder"
+                href="/#founder"
                 className="pill-btn pill-btn--ghost"
               >
                 <span>Meet the founder</span>

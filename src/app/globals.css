@@ -76,6 +76,20 @@
   --page-gutter-extra: 0px;
 }
 
+/* Mobile: 20px section inset (content area L/R) */
+@media (max-width: 639px) {
+  :root,
+  [data-theme="dark"],
+  [data-theme="light"] {
+    --page-gutter-extra: 0px;
+  }
+
+  .container-page,
+  .container-wide {
+    padding-inline: 20px;
+  }
+}
+
 /* Extra horizontal breathing room on mid-size desktops */
 @media (min-width: 1024px) and (max-width: 1440px) {
   :root,
@@ -92,6 +106,7 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
     -webkit-text-size-adjust: 100%;
   }
 
@@ -103,7 +118,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
-    text-rendering: optimizeLegibility;
+  }
+
+  html:has(.site-nav-toggle:checked) {
+    overflow: hidden;
   }
 
   h1,
@@ -322,48 +340,47 @@
     border-radius: 2px;
   }
 
-  /* Guided auto-drag selection (hero) */
+  /* Guided auto-drag selection (hero) — transform/opacity only */
   .selection-frame--animate .selection-frame__chrome {
-    width: 100%;
+    transform-origin: left center;
+    will-change: transform, opacity;
   }
 
   .selection-frame--animate .selection-frame__cursor {
-    left: 100%;
-    top: 100%;
+    left: 0;
+    top: 0;
   }
 
   @media (prefers-reduced-motion: no-preference) {
     .selection-frame--animate .selection-frame__chrome {
-      width: 0%;
       opacity: 0;
-      animation: selection-drag-chrome 6.5s cubic-bezier(0.45, 0.05, 0.25, 1)
+      transform: scaleX(0);
+      animation: selection-drag-chrome 7s cubic-bezier(0.45, 0.05, 0.25, 1) 0.8s
         infinite;
     }
 
     .selection-frame--animate .selection-frame__cursor {
       display: block;
-      left: 0;
-      top: 0;
       opacity: 0;
       transform: translate(-25%, -30%);
-      animation: selection-drag-cursor 6.5s cubic-bezier(0.45, 0.05, 0.25, 1)
+      animation: selection-drag-cursor 7s cubic-bezier(0.45, 0.05, 0.25, 1) 0.8s
         infinite;
     }
 
     .selection-frame--animate .selection-frame__tag {
       opacity: 0;
       transform: translateY(4px) scale(0.92);
-      animation: selection-drag-tag 6.5s cubic-bezier(0.45, 0.05, 0.25, 1)
+      animation: selection-drag-tag 7s cubic-bezier(0.45, 0.05, 0.25, 1) 0.8s
         infinite;
     }
 
     .selection-frame--quote.selection-frame--animate .selection-frame__chrome {
-      animation-duration: 7.4s;
+      animation-duration: 8s;
     }
 
     .selection-frame--quote.selection-frame--animate .selection-frame__cursor,
     .selection-frame--quote.selection-frame--animate .selection-frame__tag {
-      animation-duration: 7.4s;
+      animation-duration: 8s;
     }
 
     .manifesto-accent {
@@ -418,11 +435,71 @@
   }
 
   .site-nav-panel {
-    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10001;
+    width: min(20rem, 86vw);
+    height: 100vh;
+    height: 100dvh;
+    transform: translate3d(-105%, 0, 0);
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0.32s;
+    box-shadow: 8px 0 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .site-nav-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: block;
+    background: rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.28s ease,
+      visibility 0.28s;
   }
 
   .site-nav-icon-close {
     display: none;
+  }
+
+  .site-header {
+    transition:
+      background 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .site-header {
+        animation: header-solid linear both;
+        animation-timeline: scroll();
+        animation-range: 0px 40px;
+      }
+
+      .site-header .site-header__rule {
+        animation: header-rule-fade linear both;
+        animation-timeline: scroll();
+        animation-range: 0px 40px;
+      }
+    }
+  }
+
+  @supports not (animation-timeline: scroll()) {
+    .site-header {
+      background: color-mix(in srgb, var(--header-bg) 88%, transparent);
+      border-color: var(--line);
+    }
+
+    .site-header .site-header__rule {
+      opacity: 1;
+    }
   }
 
   .site-header:has(.site-nav-toggle:checked) {
@@ -431,7 +508,15 @@
   }
 
   .site-header:has(.site-nav-toggle:checked) .site-nav-panel {
-    display: block;
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .site-header:has(.site-nav-toggle:checked) .site-nav-backdrop {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .site-header:has(.site-nav-toggle:checked) .site-nav-icon-open {
@@ -444,6 +529,7 @@
 
   @media (min-width: 1280px) {
     .site-nav-panel,
+    .site-nav-backdrop,
     .site-nav-btn {
       display: none !important;
     }
@@ -508,7 +594,6 @@
   }
 
   .rotate-word__viewport {
-    /* fallback before measure — longest words are ~9ch */
     min-width: min(9ch, 100%);
     max-width: 100%;
   }
@@ -518,12 +603,15 @@
     max-width: 100%;
   }
 
-  .rotate-word__text--in {
-    animation: rotate-word-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  .rotate-word__track {
+    display: flex;
+    flex-direction: column;
   }
 
-  .rotate-word__text--out {
-    animation: rotate-word-out 0.28s cubic-bezier(0.4, 0, 1, 1) both;
+  .rotate-word__item {
+    display: block;
+    height: 1.2em;
+    line-height: 1.2;
   }
 
   .rotate-word__underline {
@@ -545,8 +633,22 @@
   }
 
   @media (prefers-reduced-motion: no-preference) {
+    .rotate-word__track {
+      animation: rotate-word-cycle 11.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    }
+
     .rotate-word__underline {
       animation: rotate-word-line 2.6s ease-in-out infinite;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rotate-word__track {
+      transform: none !important;
+    }
+
+    .rotate-word__item:not(:first-child) {
+      display: none;
     }
   }
 
@@ -697,33 +799,30 @@
   }
 }
 
-/* Hero / quote selection: enter → drag → hold → reset (loops) */
+/* Hero / quote selection: enter → drag → hold → reset (transform only) */
 @keyframes selection-drag-chrome {
   0%,
   4% {
-    width: 0%;
     opacity: 0;
+    transform: scaleX(0);
   }
   8% {
-    width: 0%;
     opacity: 1;
+    transform: scaleX(0);
   }
-  42% {
-    width: 100%;
-    opacity: 1;
-  }
+  42%,
   68% {
-    width: 100%;
     opacity: 1;
+    transform: scaleX(1);
   }
   82% {
-    width: 100%;
     opacity: 0;
+    transform: scaleX(1);
   }
   86%,
   100% {
-    width: 0%;
     opacity: 0;
+    transform: scaleX(0);
   }
 }
 
@@ -746,12 +845,7 @@
     opacity: 1;
     transform: translate(-15%, -20%) scale(0.96);
   }
-  42% {
-    left: 100%;
-    top: 100%;
-    opacity: 1;
-    transform: translate(-15%, 2px) scale(1);
-  }
+  42%,
   68% {
     left: 100%;
     top: 100%;
@@ -795,6 +889,49 @@
   100% {
     opacity: 0;
     transform: translateY(6px) scale(0.9);
+  }
+}
+
+@keyframes header-solid {
+  from {
+    background: transparent;
+    border-color: transparent;
+  }
+  to {
+    background: var(--header-bg);
+    border-color: var(--line);
+  }
+}
+
+@keyframes header-rule-fade {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 4 words × 2.8s = 11.2s; + duplicate first for seamless loop */
+@keyframes rotate-word-cycle {
+  0%,
+  18% {
+    transform: translateY(0);
+  }
+  25%,
+  43% {
+    transform: translateY(-20%);
+  }
+  50%,
+  68% {
+    transform: translateY(-40%);
+  }
+  75%,
+  93% {
+    transform: translateY(-60%);
+  }
+  100% {
+    transform: translateY(-80%);
   }
 }
 
@@ -1021,17 +1158,13 @@
   .services-ticker__track--up,
   .manifesto-accent,
   .manifesto-founder,
-  .rotate-word__text--in,
-  .rotate-word__text--out,
+  .rotate-word__track,
   .rotate-word__underline {
     animation: none !important;
   }
 
-  .rotate-word__text--in,
-  .rotate-word__text--out {
-    opacity: 1;
-    transform: none;
-    filter: none;
+  .rotate-word__track {
+    transform: none !important;
   }
 
   .rotate-word__underline {
@@ -1052,7 +1185,7 @@
   }
 
   .selection-frame--animate .selection-frame__chrome {
-    width: 100%;
+    transform: scaleX(1);
     opacity: 1;
   }
 

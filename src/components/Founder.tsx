@@ -46,22 +46,22 @@ export function Founder() {
       <div className="container-page">
         <Reveal className="section-center mb-12 md:mb-16">
           <PillBadge className="mb-5">
-            <span className="text-[var(--accent)]">✦</span>
+            <span className="text-(--accent)">✦</span>
             About
           </PillBadge>
-          <h2 className="text-[clamp(1.75rem,4.5vw,3rem)] font-extrabold text-[var(--fg)]">
+          <h2 className="text-[clamp(1.75rem,4.5vw,3rem)] font-extrabold text-(--fg)">
             Founder-led engineering
           </h2>
         </Reveal>
 
         <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-14">
-          <Reveal className="mx-auto w-full max-w-[300px] overflow-hidden rounded-[var(--radius-xl)] shadow-[var(--shadow-float)] md:mx-0 md:max-w-[360px]">
+          <Reveal className="mx-auto w-full max-w-75 overflow-hidden rounded-xl shadow-elite md:mx-0 md:max-w-90">
             <Image
               src="/brand/founder.webp"
               alt={`${SITE.founder}, Founder & Lead Developer at ${SITE.name}, Karachi`}
               width={680}
               height={850}
-              className="aspect-[4/5] w-full object-cover object-[center_12%]"
+              className="aspect-4/5 w-full object-cover object-[center_12%]"
               sizes="(max-width:768px) 300px, 360px"
               quality={55}
               loading="lazy"
@@ -70,19 +70,19 @@ export function Founder() {
           </Reveal>
 
           <Reveal className="text-center md:text-left">
-            <span className="mb-3 block text-[0.8rem] font-medium text-[var(--accent)]">
+            <span className="mb-3 block text-[0.8rem] font-medium text-(--accent)">
               Founder & Lead Developer
             </span>
-            <h3 className="mb-4 text-[clamp(1.5rem,3vw,2rem)] font-extrabold text-[var(--fg)]">
+            <h3 className="mb-4 text-[clamp(1.5rem,3vw,2rem)] font-extrabold text-(--fg)">
               {SITE.founder}
             </h3>
-            <p className="mx-auto mb-3.5 max-w-[48ch] text-[0.98rem] text-[var(--fg-muted)] md:mx-0">
+            <p className="mx-auto mb-3.5 max-w-[48ch] text-[0.98rem] text-(--fg-muted) md:mx-0">
               A full-stack engineer based in Karachi with deep experience across
               React, Next.js, Node.js, cloud infrastructure, and product systems
               — Ayaz Web Studio exists to deliver elite software without the
               agency bloat.
             </p>
-            <p className="mx-auto mb-6 max-w-[48ch] text-[0.98rem] text-[var(--fg-muted)] md:mx-0">
+            <p className="mx-auto mb-6 max-w-[48ch] text-[0.98rem] text-(--fg-muted) md:mx-0">
               Every SaaS product, web app, and platform is architected, built,
               and supported personally — no outsourcing, no middlemen, just a
               direct line to the engineer shipping your software.
@@ -96,9 +96,9 @@ export function Founder() {
                   target="_blank"
                   rel="noopener noreferrer me"
                   aria-label={`${SITE.founder} on ${label}`}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--fg-muted)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-(--line) bg-(--surface) text-(--fg-muted) transition hover:border-(--accent) hover:text-(--accent)"
                 >
-                  <Icon className="h-[18px] w-[18px]" />
+                  <Icon className="h-4.5 w-4.5" />
                 </a>
               ))}
             </div>
@@ -107,7 +107,7 @@ export function Founder() {
               {BADGES.map((badge) => (
                 <span
                   key={badge}
-                  className="rounded-full border border-[var(--line)] bg-[var(--surface)] px-3 py-1.5 text-[0.75rem] text-[var(--fg-muted)]"
+                  className="rounded-full border border-(--line) bg-(--surface) px-3 py-1.5 text-xs text-(--fg-muted)"
                 >
                   {badge}
                 </span>

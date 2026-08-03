@@ -26,13 +26,13 @@ export function SelectionFrame({
     >
       <span
         aria-hidden
-        className="selection-frame__chrome pointer-events-none absolute inset-y-0 left-0 z-[1] w-full overflow-visible"
+        className="selection-frame__chrome pointer-events-none absolute inset-y-0 left-0 z-1 w-full overflow-visible"
       >
-        <span className="selection-frame__box absolute inset-0 rounded-[2px] outline outline-[2.5px] outline-[var(--accent)] sm:outline-4" />
-        <span className="absolute -left-[5px] -top-[5px] h-2 w-2 rounded-[2px] bg-[var(--bg)] outline outline-[2.5px] outline-[var(--accent)] outline-offset-[-2px] sm:-left-[7px] sm:-top-[7px] sm:h-3 sm:w-3 sm:outline-4" />
-        <span className="absolute -right-[5px] -top-[5px] h-2 w-2 rounded-[2px] bg-[var(--bg)] outline outline-[2.5px] outline-[var(--accent)] outline-offset-[-2px] sm:-right-[7px] sm:-top-[7px] sm:h-3 sm:w-3 sm:outline-4" />
-        <span className="absolute -bottom-[5px] -left-[5px] h-2 w-2 rounded-[2px] bg-[var(--bg)] outline outline-[2.5px] outline-[var(--accent)] outline-offset-[-2px] sm:-bottom-[7px] sm:-left-[7px] sm:h-3 sm:w-3 sm:outline-4" />
-        <span className="absolute -bottom-[5px] -right-[5px] h-2 w-2 rounded-[2px] bg-[var(--bg)] outline outline-[2.5px] outline-[var(--accent)] outline-offset-[-2px] sm:-bottom-[7px] sm:-right-[7px] sm:h-3 sm:w-3 sm:outline-4" />
+        <span className="selection-frame__box absolute inset-0 rounded-xs outline-solid outline-[2.5px] outline-(--accent) sm:outline-4" />
+        <span className="absolute -left-1.25 -top-1.25 h-2 w-2 rounded-xs bg-(--bg) outline-solid outline-[2.5px] outline-(--accent) -outline-offset-2 sm:-left-1.75 sm:-top-1.75 sm:h-3 sm:w-3 sm:outline-4" />
+        <span className="absolute -right-1.25 -top-1.25 h-2 w-2 rounded-xs bg-(--bg) outline-solid outline-[2.5px] outline-(--accent) -outline-offset-2 sm:-right-1.75 sm:-top-1.75 sm:h-3 sm:w-3 sm:outline-4" />
+        <span className="absolute -bottom-1.25 -left-1.25 h-2 w-2 rounded-xs bg-(--bg) outline-solid outline-[2.5px] outline-(--accent) -outline-offset-2 sm:-bottom-1.75 sm:-left-1.75 sm:h-3 sm:w-3 sm:outline-4" />
+        <span className="absolute -bottom-1.25 -right-1.25 h-2 w-2 rounded-xs bg-(--bg) outline-solid outline-[2.5px] outline-(--accent) -outline-offset-2 sm:-bottom-1.75 sm:-right-1.75 sm:h-3 sm:w-3 sm:outline-4" />
       </span>
 
       <span className="relative z-0">{children}</span>
@@ -40,7 +40,11 @@ export function SelectionFrame({
       {label ? (
         <span
           aria-hidden
-          className="selection-frame__cursor pointer-events-none absolute left-full top-full z-[2] -translate-x-[20%] translate-y-[2px] sm:-translate-x-[15%]"
+          className={`selection-frame__cursor pointer-events-none absolute z-2 ${
+            animate
+              ? "left-0 top-0"
+              : "left-full top-full translate-x-[-20%] translate-y-0.5 sm:translate-x-[-15%]"
+          }`}
         >
           <svg
             viewBox="210 38 30 27"
@@ -64,7 +68,7 @@ export function SelectionFrame({
               />
             </g>
           </svg>
-          <span className="selection-frame__tag absolute left-3.5 top-4 whitespace-nowrap rounded-xl bg-[var(--accent)] px-2 py-0.5 text-[0.65rem] font-bold text-[var(--accent-fg)] sm:left-5 sm:top-6 sm:rounded-2xl sm:px-3.5 sm:py-1 sm:text-[clamp(0.75rem,1.2vw,0.95rem)]">
+          <span className="selection-frame__tag absolute left-3.5 top-4 whitespace-nowrap rounded-xl bg-(--accent) px-2 py-0.5 text-[0.65rem] font-bold text-(--accent-fg) sm:left-5 sm:top-6 sm:rounded-2xl sm:px-3.5 sm:py-1 sm:text-[clamp(0.75rem,1.2vw,0.95rem)]">
             {label}
           </span>
         </span>

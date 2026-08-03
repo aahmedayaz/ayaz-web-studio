@@ -11,13 +11,13 @@ export function Contact() {
       <div className="container-page">
         <Reveal className="section-center mb-10 md:mb-14">
           <PillBadge className="mb-5">
-            <span className="text-[var(--accent)]">✦</span>
+            <span className="text-(--accent)">✦</span>
             Start building
           </PillBadge>
-          <h2 className="text-[clamp(1.75rem,4.5vw,3rem)] font-extrabold text-[var(--fg)]">
+          <h2 className="text-[clamp(1.75rem,4.5vw,3rem)] font-extrabold text-(--fg)">
             Ready to ship your next product?
           </h2>
-          <p className="mx-auto mt-4 max-w-[44ch] text-[1rem] text-[var(--fg-muted)]">
+          <p className="mx-auto mt-4 max-w-[44ch] text-base text-(--fg-muted)">
             SaaS, web apps, platforms, or automation — send a WhatsApp message
             and get a clear next step, usually within the hour.
           </p>
@@ -28,7 +28,7 @@ export function Contact() {
               rel="noopener noreferrer"
               className="pill-btn pill-btn--primary"
             >
-              <WhatsAppIcon className="h-[18px] w-[18px]" />
+              <WhatsAppIcon className="h-4.5 w-4.5" />
               Message on WhatsApp
             </a>
             <a href={`mailto:${SITE.email}`} className="pill-btn pill-btn--ghost">
@@ -37,38 +37,38 @@ export function Contact() {
           </div>
         </Reveal>
 
-        <div className="mx-auto grid max-w-[28rem] grid-cols-1 gap-5 min-[640px]:max-w-none lg:grid-cols-2 lg:gap-7">
-          <div className="rounded-[var(--radius-xl)] border border-[var(--line)] bg-[var(--surface)] p-5 min-[375px]:p-6 md:p-8">
-            <div className="flex gap-3.5 border-b border-[var(--line)] py-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent)]">
+        <div className="mx-auto grid max-w-md grid-cols-1 gap-5 min-[640px]:max-w-none lg:grid-cols-2 lg:gap-7">
+          <div className="rounded-xl border border-(--line) bg-(--surface) p-5 min-[375px]:p-6 md:p-8">
+            <div className="flex gap-3.5 border-b border-(--line) py-4">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-(--accent)/15 text-(--accent)">
                 <Phone size={17} strokeWidth={1.6} />
               </div>
               <div className="min-w-0">
-                <div className="mb-0.5 text-[0.7rem] font-medium uppercase tracking-[0.08em] text-[var(--fg-soft)]">
+                <div className="mb-0.5 text-[0.7rem] font-medium uppercase tracking-[0.08em] text-(--fg-soft)">
                   WhatsApp / Phone
                 </div>
                 <a
                   href={SITE.whatsappShort}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="break-words text-[0.96rem] font-semibold text-[var(--fg)] hover:text-[var(--accent)]"
+                  className="wrap-break-word text-[0.96rem] font-semibold text-(--fg) hover:text-(--accent)"
                 >
                   {SITE.phoneDisplay}
                 </a>
               </div>
             </div>
 
-            <div className="flex gap-3.5 border-b border-[var(--line)] py-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent)]">
+            <div className="flex gap-3.5 border-b border-(--line) py-4">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-(--accent)/15 text-(--accent)">
                 <Mail size={17} strokeWidth={1.6} />
               </div>
               <div className="min-w-0">
-                <div className="mb-0.5 text-[0.7rem] font-medium uppercase tracking-[0.08em] text-[var(--fg-soft)]">
+                <div className="mb-0.5 text-[0.7rem] font-medium uppercase tracking-[0.08em] text-(--fg-soft)">
                   Email
                 </div>
                 <a
                   href={`mailto:${SITE.email}`}
-                  className="break-all text-[0.96rem] font-semibold text-[var(--fg)] hover:text-[var(--accent)]"
+                  className="break-all text-[0.96rem] font-semibold text-(--fg) hover:text-(--accent)"
                 >
                   {SITE.email}
                 </a>
@@ -76,21 +76,21 @@ export function Contact() {
             </div>
 
             <div className="flex gap-3.5 py-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent)]">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-(--accent)/15 text-(--accent)">
                 <MapPin size={17} strokeWidth={1.6} />
               </div>
               <div className="min-w-0">
-                <div className="mb-0.5 text-[0.7rem] font-medium uppercase tracking-[0.08em] text-[var(--fg-soft)]">
+                <div className="mb-0.5 text-[0.7rem] font-medium uppercase tracking-[0.08em] text-(--fg-soft)">
                   Studio Address
                 </div>
-                <span className="text-[0.96rem] font-semibold text-[var(--fg)]">
+                <span className="text-[0.96rem] font-semibold text-(--fg)">
                   {SITE.address}
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="min-h-[240px] overflow-hidden rounded-[var(--radius-xl)] border border-[var(--line)] shadow-[var(--shadow-float)] min-[375px]:min-h-[280px]">
+          <div className="min-h-60 overflow-hidden rounded-xl border border-(--line) shadow-elite min-[375px]:min-h-70">
             <MapEmbed />
           </div>
         </div>

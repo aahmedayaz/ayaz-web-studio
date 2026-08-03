@@ -4,6 +4,7 @@ import { Hero } from "@/components/Hero";
 import { ProofBar } from "@/components/ProofBar";
 import { Footer } from "@/components/Footer";
 import { GridRails, GridRule } from "@/components/GridRails";
+import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 
 const TechMarquee = dynamic(() =>
   import("@/components/TechMarquee").then((m) => ({ default: m.TechMarquee })),
@@ -19,9 +20,6 @@ const ManifestoQuote = dynamic(() =>
     default: m.ManifestoQuote,
   })),
 );
-const Industries = dynamic(() =>
-  import("@/components/Industries").then((m) => ({ default: m.Industries })),
-);
 const Founder = dynamic(() =>
   import("@/components/Founder").then((m) => ({ default: m.Founder })),
 );
@@ -31,19 +29,14 @@ const FAQ = dynamic(() =>
 const Contact = dynamic(() =>
   import("@/components/Contact").then((m) => ({ default: m.Contact })),
 );
-const WhatsAppFloat = dynamic(() =>
-  import("@/components/WhatsAppFloat").then((m) => ({
-    default: m.WhatsAppFloat,
-  })),
-);
 
 export default function HomePage() {
   return (
     <>
       <Header />
-      <div className="site-shell relative pt-[4rem] md:pt-[4.5rem]">
+      <div className="site-shell relative pt-16 md:pt-18">
         <GridRails />
-        <main className="relative z-[1]">
+        <main className="relative z-1">
           <Hero />
           <GridRule />
           <ProofBar />
@@ -61,10 +54,6 @@ export default function HomePage() {
           <GridRule />
           <div className="content-auto">
             <ManifestoQuote />
-          </div>
-          <GridRule />
-          <div className="content-auto">
-            <Industries />
           </div>
           <GridRule />
           <div className="content-auto">

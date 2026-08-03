@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import { SITE } from "@/lib/site";
 import { WhatsAppIcon } from "@/components/icons";
 import { RotateWord } from "@/components/RotateWord";
@@ -6,41 +5,28 @@ import { FeaturePills } from "@/components/FeaturePills";
 import { PillBadge } from "@/components/PillBadge";
 import { SelectionFrame } from "@/components/SelectionFrame";
 import { GridRule } from "@/components/GridRails";
-
-const ProductShowcase = dynamic(
-  () =>
-    import("@/components/ProductShowcase").then((m) => ({
-      default: m.ProductShowcase,
-    })),
-  {
-    loading: () => (
-      <div
-        className="mx-auto aspect-[4/3] w-full max-w-[860px] animate-pulse rounded-[1.25rem] border border-[var(--line)] bg-[var(--surface)] sm:aspect-[16/10]"
-        aria-hidden
-      />
-    ),
-  },
-);
+import { DesktopProductShowcase } from "@/components/DesktopProductShowcase";
 
 export function Hero() {
   return (
     <section id="top" className="relative isolate overflow-x-clip">
-      <div className="container-wide relative mx-auto max-w-[1728px]">
+      <div className="container-wide relative mx-auto max-w-432 max-sm:px-0!">
         <div
-          className="relative flex w-full max-w-full flex-col items-center text-center"
+          className="relative flex w-full max-w-full min-h-[calc(100dvh-80px)] flex-col items-center justify-center px-10 text-center sm:px-0 md:min-h-[calc(100dvh-95px)]"
           style={{
             gap: "clamp(24px, 4vw, 48px)",
-            padding: "clamp(64px, 9.3vw, 140px) 0 clamp(40px, 6vw, 72px)",
+            paddingTop: "clamp(24px, 4vw, 48px)",
+            paddingBottom: "clamp(24px, 4vw, 48px)",
           }}
         >
           <div className="flex w-full max-w-full flex-col items-center gap-3 sm:gap-4">
             <PillBadge>
-              <span className="text-[var(--accent)]">✦</span>
+              <span className="text-(--accent)">✦</span>
               Elite software · Karachi
             </PillBadge>
 
             <h1
-              className="m-0 w-full max-w-[914px] text-balance break-words font-extrabold tracking-[-0.02em] text-[var(--fg)]"
+              className="m-0 w-full max-w-228.5 text-balance wrap-break-word font-extrabold tracking-[-0.02em] text-(--fg)"
               style={{
                 fontSize: "clamp(1.65rem, 0.85rem + 4.2vw, 4rem)",
                 lineHeight: 1.25,
@@ -48,14 +34,14 @@ export function Hero() {
             >
               One engineer.{" "}
               <SelectionFrame label="Ayaz" animate>
-                <span className="text-[var(--fg)]">
+                <span className="text-(--fg)">
                   The power of a full studio
                 </span>
               </SelectionFrame>
             </h1>
 
             <p
-              className="m-0 w-full max-w-[644px] px-1 font-normal text-[var(--fg-muted)] sm:px-4"
+              className="m-0 w-full max-w-161 px-1 font-normal text-(--fg-muted) sm:px-4"
               style={{
                 fontSize: "clamp(0.95rem, 0.85rem + 0.5vw, 1.25rem)",
                 lineHeight: 1.5,
@@ -74,14 +60,14 @@ export function Hero() {
                 rel="noopener noreferrer"
                 className="pill-btn pill-btn--primary w-full sm:w-auto"
               >
-                <WhatsAppIcon className="h-[15px] w-[15px] sm:h-[18px] sm:w-[18px]" />
-                <span>Start a project</span>
+                <WhatsAppIcon className="h-3.75 w-3.75 sm:h-4.5 sm:w-4.5" />
+                <span>Let&apos;s talk on WhatsApp</span>
               </a>
               <a
-                href="#work"
+                href="/work"
                 className="pill-btn pill-btn--ghost w-full sm:w-auto"
               >
-                <span>View case studies</span>
+                <span>View all work</span>
               </a>
             </div>
           </div>
@@ -102,10 +88,8 @@ export function Hero() {
       </div>
       <GridRule />
 
-      <div className="relative min-w-0 overflow-x-clip px-3 sm:px-6 lg:px-8">
-        <div className="py-[clamp(40px,6vw,90px)] pb-[clamp(48px,7vw,96px)]">
-          <ProductShowcase />
-        </div>
+      <div className="relative hidden min-w-0 overflow-x-clip px-[calc(12px+var(--page-gutter-extra))] sm:px-6 md:block lg:px-8">
+        <DesktopProductShowcase />
       </div>
     </section>
   );

@@ -35,7 +35,7 @@ export function DesktopHeroVisual() {
   }, []);
 
   if (!Scene) {
-    return <div className="hidden min-h-[420px] xl:block" aria-hidden />;
+    return <div className="hidden min-h-105 xl:block" aria-hidden />;
   }
 
   return <Scene />;

@@ -6,13 +6,13 @@ export function GridRails() {
       className="pointer-events-none absolute inset-0 z-0"
     >
       <div
-        className="absolute inset-y-0 w-px bg-[var(--grid-line)]"
+        className="absolute inset-y-0 w-px bg-(--grid-line)"
         style={{
           left: "calc(var(--page-gutter-extra) + clamp(16px, max(-1052.75px + 71.25vw, -5436px + 335.3vw), 358px))",
         }}
       />
       <div
-        className="absolute inset-y-0 w-px bg-[var(--grid-line)]"
+        className="absolute inset-y-0 w-px bg-(--grid-line)"
         style={{
           right: "calc(var(--page-gutter-extra) + clamp(16px, max(-1052.75px + 71.25vw, -5436px + 335.3vw), 362px))",
         }}
@@ -24,9 +24,9 @@ export function GridRails() {
 export function GridRule({ className = "" }: { className?: string }) {
   return (
     <div aria-hidden className={`relative h-px w-full ${className}`}>
-      <div className="absolute inset-x-0 top-0 h-px bg-[var(--grid-line)]" />
+      <div className="absolute inset-x-0 top-0 h-px bg-(--grid-line)" />
       <svg
-        className="absolute -top-3 z-[2]"
+        className="absolute -top-3 z-2"
         width="24"
         height="24"
         aria-hidden
@@ -46,7 +46,7 @@ export function GridRule({ className = "" }: { className?: string }) {
         />
       </svg>
       <svg
-        className="absolute -top-3 z-[2]"
+        className="absolute -top-3 z-2"
         width="24"
         height="24"
         aria-hidden

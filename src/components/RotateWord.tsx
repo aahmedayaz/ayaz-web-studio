@@ -1,63 +1,29 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { ROTATE_WORDS } from "@/lib/site";
 
-/** Longest word locks the slot — "Platforms" / "Web Apps" ≈ 9ch */
-const SLOT_CH = "9ch";
-
+/** CSS-only word cycle — zero client JS on the hero critical path. */
 export function RotateWord() {
-  const [wordIndex, setWordIndex] = useState(0);
-  const [phase, setPhase] = useState<"in" | "out">("in");
-  const [active, setActive] = useState(false);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    let intervalId = 0;
-    const start = window.setTimeout(() => {
-      setActive(true);
-      intervalId = window.setInterval(() => {
-        setPhase("out");
-        window.setTimeout(() => {
-          setWordIndex((i) => (i + 1) % ROTATE_WORDS.length);
-          setPhase("in");
-        }, 280);
-      }, 2800);
-    }, 1200);
-
-    return () => {
-      window.clearTimeout(start);
-      window.clearInterval(intervalId);
-    };
-  }, []);
-
-  const word = ROTATE_WORDS[wordIndex];
-
   return (
     <span
       className="rotate-word relative inline-flex items-baseline align-baseline"
-      aria-live="polite"
-      aria-atomic="true"
+      aria-hidden
     >
       <span
-        className="rotate-word__viewport relative inline-block overflow-hidden whitespace-nowrap font-semibold text-[var(--accent)]"
-        style={{ width: SLOT_CH }}
+        className="rotate-word__viewport relative inline-block overflow-hidden whitespace-nowrap font-semibold text-(--accent)"
+        style={{ width: "9ch", height: "1.2em" }}
       >
-        <span
-          key={`${word}-${phase}`}
-          className={`rotate-word__text inline-block ${
-            active && phase === "out"
-              ? "rotate-word__text--out"
-              : active
-                ? "rotate-word__text--in"
-                : ""
-          }`}
-        >
-          {word}
+        <span className="rotate-word__track">
+          {ROTATE_WORDS.map((word) => (
+            <span key={word} className="rotate-word__item">
+              {word}
+            </span>
+          ))}
+          <span className="rotate-word__item" aria-hidden>
+            {ROTATE_WORDS[0]}
+          </span>
         </span>
-        <span className="rotate-word__underline" aria-hidden />
+        <span className="rotate-word__underline" />
       </span>
+      <span className="sr-only">Products, SaaS, Web Apps, and Platforms</span>
     </span>
   );
 }

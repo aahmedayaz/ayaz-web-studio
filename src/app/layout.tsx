@@ -8,7 +8,7 @@ const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
   display: "swap",
-  weight: ["400", "600", "700", "800"],
+  weight: ["400", "700", "800"],
   preload: true,
   adjustFontFallback: true,
 });
@@ -113,7 +113,6 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-        <link rel="dns-prefetch" href="https://wa.me" />
       </head>
       <body className={`${manrope.className} antialiased`}>
         <JsonLd />

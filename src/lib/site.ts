@@ -22,11 +22,10 @@ export const SITE = {
 } as const;
 
 export const NAV_LINKS = [
-  { href: "#services", label: "Services" },
-  { href: "#work", label: "Work" },
-  { href: "#industries", label: "Industries" },
-  { href: "#founder", label: "About" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#services", label: "Services" },
+  { href: "/#work", label: "Work" },
+  { href: "/#founder", label: "About" },
+  { href: "/#contact", label: "Contact" },
 ] as const;
 
 export const ROTATE_WORDS = [
@@ -75,96 +74,171 @@ export const SERVICES = [
   },
 ] as const;
 
-export const CASE_STUDIES = [
-  {
-    id: "edtech",
-    title: "Designing an EdTech Platform",
-    category: "Web Apps · Product Design",
-    accent: "mint" as const,
-    visual: "mobile" as const,
-    tag: "LearnFlow",
-  },
-  {
-    id: "commerce",
-    title: "Scaling an E-Commerce System",
-    category: "SaaS · Web Development",
-    accent: "gold" as const,
-    visual: "desktop" as const,
-    tag: "CommerceOS",
-  },
-  {
-    id: "ai",
-    title: "Building an A.I. Product",
-    category: "AI · Automation",
-    accent: "violet" as const,
-    visual: "ai" as const,
-    tag: "Neural Lab",
-  },
-  {
-    id: "fintech",
-    title: "Digitizing a FinTech Flow",
-    category: "Payments · Mobile Apps",
-    accent: "blue" as const,
-    visual: "fintech" as const,
-    tag: "PayStack",
-  },
-] as const;
+export type PortfolioProject = {
+  id: string;
+  title: string;
+  category: string;
+  url: string;
+  description: string;
+  accent: string;
+  image: string;
+};
 
-export const TIER1 = [
+/** Shown by default on the homepage “Products that prove the craft”. */
+export const FEATURED_PROJECTS: PortfolioProject[] = [
   {
-    title: "Startups & Product Teams",
+    id: "road2crypto",
+    title: "Road2Crypto",
+    category: "Fintech · SaaS",
+    url: "https://road2crypto.com/",
     description:
-      "Founders shipping MVPs, SaaS cores, and customer-facing products that need elite engineering from day one.",
+      "Crypto portfolio tracker that consolidates wallets, exchanges, and DeFi into one live dashboard.",
+    accent: "#00D4AA",
+    image: "/portfolio/road2crypto.webp",
   },
   {
-    title: "Growing Digital Brands",
+    id: "findmyvenue",
+    title: "FindMyVenue",
+    category: "Marketplace · Booking",
+    url: "https://www.findmyvenue.com/",
     description:
-      "Businesses ready to move beyond a brochure site into real platforms — bookings, commerce, and ops systems.",
+      "Venue discovery and booking product built for clear search, conversion, and operational flow.",
+    accent: "#0080FF",
+    image: "/portfolio/findmyvenue.webp",
   },
   {
-    title: "Agencies & Studios",
+    id: "spacefit",
+    title: "SpaceFit",
+    category: "SaaS · Product Design",
+    url: "https://www.spacefit.co/",
     description:
-      "Partners who need a reliable engineering arm for complex builds, interactive experiences, and product launches.",
+      "Modern product experience with polished UI systems for space and fitness workflows.",
+    accent: "#7C5CFF",
+    image: "/portfolio/spacefit.webp",
   },
   {
-    title: "Education & Learning",
+    id: "laderach",
+    title: "Läderach",
+    category: "E-commerce · Brand",
+    url: "https://laderach.com/eu-en/",
     description:
-      "EdTech platforms, academies, and course products with enrollment, progress tracking, and learner dashboards.",
+      "Premium chocolate commerce experience — sensory storytelling, collections, and elite retail UX.",
+    accent: "#C45C26",
+    image: "/portfolio/laderach.webp",
   },
   {
-    title: "Health & Wellness",
+    id: "vertex",
+    title: "Vertex Environment",
+    category: "3D · Interactive",
+    url: "https://vertex-env.vercel.app/",
     description:
-      "Clinics and wellness brands that need booking, patient flows, and secure digital experiences.",
+      "Immersive environment experience engineered for presence, motion, and visual craft.",
+    accent: "#3DDC97",
+    image: "/portfolio/vertex-v2.webp",
   },
-] as const;
+  {
+    id: "davinci",
+    title: "DaVinci AI",
+    category: "AI · Game Assets",
+    url: "https://davinciai.vercel.app/",
+    description:
+      "AI-powered game asset studio with a striking product surface and generation-first UX.",
+    accent: "#FF2D8B",
+    image: "/portfolio/davinci.webp",
+  },
+];
 
-export const TIER2 = [
+/** Additional work shown on the full portfolio detail page. */
+export const ARCHIVE_PROJECTS: PortfolioProject[] = [
   {
-    title: "FinTech & Payments",
+    id: "dentrix",
+    title: "Dentrix Ascend",
+    category: "Healthcare · SaaS",
+    url: "https://www.dentrixascend.com/",
     description:
-      "Wallets, checkout systems, and financial workflows where security, trust, and reliability are non-negotiable.",
+      "Cloud dental practice platform focused on clarity, reliability, and clinical workflows.",
+    accent: "#0080FF",
+    image: "/portfolio/dentrix.webp",
   },
   {
-    title: "Real Estate & Property Tech",
+    id: "plodie",
+    title: "Plodie",
+    category: "Product · Web Apps",
+    url: "https://plodie.com/",
     description:
-      "Listing platforms, lead engines, and virtual discovery tools for builders, agencies, and housing societies.",
+      "Product-led web experience with clean information architecture and sharp interaction design.",
+    accent: "#F5C518",
+    image: "/portfolio/plodie.webp",
   },
   {
-    title: "Enterprise & Operations",
+    id: "iptechview",
+    title: "IP Tech View",
+    category: "SaaS · Analytics",
+    url: "https://www.iptechview.com/",
     description:
-      "Internal tools, ERP-style systems, and automation layers that replace spreadsheets and scattered chats.",
+      "Technology visibility product for teams that need structured insight and operational clarity.",
+    accent: "#5B9CF5",
+    image: "/portfolio/iptechview.webp",
   },
   {
-    title: "Marketplaces & Platforms",
+    id: "smiels",
+    title: "Smiels",
+    category: "Brand · Digital",
+    url: "https://www.smiels.com/",
     description:
-      "Multi-sided products with discovery, matching, transactions, and real-time communication at the core.",
+      "Brand-forward digital presence with a refined visual system and conversion-minded layout.",
+    accent: "#FF7A1A",
+    image: "/portfolio/smiels.webp",
   },
   {
-    title: "Events & Experiences",
+    id: "aijoborbit",
+    title: "AI Job Orbit",
+    category: "AI · Marketplace",
+    url: "http://aijoborbit.com/",
     description:
-      "Ticketing, venue booking, and experiential platforms that convert attention into confirmed attendance.",
+      "AI-era job discovery experience connecting talent and opportunity with modern product UX.",
+    accent: "#818CF8",
+    image: "/portfolio/aijoborbit-v2.webp",
   },
-] as const;
+  {
+    id: "hoap",
+    title: "HOAP",
+    category: "Nonprofit · Web",
+    url: "https://www.hoap.org.pk/",
+    description:
+      "Mission-driven organization site for HOAP — clear storytelling and accessible public presence.",
+    accent: "#25D366",
+    image: "/portfolio/hoap.webp",
+  },
+  {
+    id: "storecloud",
+    title: "Storecloud Explore",
+    category: "SaaS · Dashboard",
+    url: "https://explore.storecloud.org/dashboard",
+    description:
+      "Operational dashboard surface for explore and store workflows with dense, usable UI.",
+    accent: "#00B4D8",
+    image: "/portfolio/storecloud-v2.webp",
+  },
+  {
+    id: "lidvizion",
+    title: "Lidvizion AI",
+    category: "AI · Product",
+    url: "https://www.lidvizion.ai/",
+    description:
+      "AI product experience designed for trust, capability signaling, and high-end interface craft.",
+    accent: "#A78BFA",
+    image: "/portfolio/lidvizion.webp",
+  },
+];
+
+export const ALL_PROJECTS: PortfolioProject[] = [
+  ...FEATURED_PROJECTS,
+  ...ARCHIVE_PROJECTS,
+];
+
+/** @deprecated Prefer FEATURED_PROJECTS */
+export const CASE_STUDIES = FEATURED_PROJECTS;
 
 export const FAQ_ITEMS = [
   {
