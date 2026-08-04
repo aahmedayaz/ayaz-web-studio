@@ -32,7 +32,7 @@ export function Hero() {
                 lineHeight: 1.25,
               }}
             >
-              One engineer.{" "}
+              Three engineers.{" "}
               <SelectionFrame label="Ayaz" animate>
                 <span className="text-(--fg)">
                   The power of a full studio
